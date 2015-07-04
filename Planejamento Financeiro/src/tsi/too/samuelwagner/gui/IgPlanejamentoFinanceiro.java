@@ -107,7 +107,7 @@ public class IgPlanejamentoFinanceiro extends JFrame {
 		
 		//Cria o menu Arquivo, define sua tecla mnêmonica e adiciona a barra de menus.
 		JMenu arquivoMenu = new JMenu("Arquivo");
-		arquivoMenu.setMnemonic(KeyEvent.VK_A);
+		arquivoMenu.setMnemonic(KeyEvent.VK_Q);
 		barraMenu.add(arquivoMenu);
 		
 		//Cria um item de menu e adiciona ao menu arquivo.
@@ -402,7 +402,7 @@ public class IgPlanejamentoFinanceiro extends JFrame {
 		
 		//Cria um botão com o balanço pagamento, define seu rótulo e propriedades e adiciona na janela.
 		JButton balancoPagamentosButton = new JButton("Pagamentos");
-		balancoPagamentosButton.setMnemonic(KeyEvent.VK_P);
+		balancoPagamentosButton.setMnemonic(KeyEvent.VK_G);
 		balancoPagamentosButton.setIcon(new ImageIcon(IgPlanejamentoFinanceiro.class.getResource("/tsi/too/samuelwagner/imagens/dollars5.png")));
 		balancoPagamentosButton.setFont(new Font("Dialog", Font.BOLD, 12));
 		balancoPagamentosButton.setMargin(new Insets(0, 0, 0, 0));
@@ -441,6 +441,11 @@ public class IgPlanejamentoFinanceiro extends JFrame {
 		//Cria o areaGraficoPanel e adiciona ao painel principal.
 		abaTabbedPane.addTab("Balanço Mensal", new ImageIcon(IgPlanejamentoFinanceiro.class.getResource("/tsi/too/samuelwagner/imagens/clock245.png")), criarPainelBalancoMensal(), null);
 
+		abaTabbedPane.setMnemonicAt(0, KeyEvent.VK_I);
+		abaTabbedPane.setMnemonicAt(1, KeyEvent.VK_A);
+		abaTabbedPane.setMnemonicAt(2, KeyEvent.VK_T);
+		abaTabbedPane.setMnemonicAt(3, KeyEvent.VK_P);
+		abaTabbedPane.setMnemonicAt(4, KeyEvent.VK_B);
 		//Define a janela como visível.
 		setVisible(true);
 	}//IgPlanejamentoFinanceiro()
