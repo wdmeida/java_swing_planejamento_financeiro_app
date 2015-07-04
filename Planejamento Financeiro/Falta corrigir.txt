@@ -1,0 +1,7 @@
+﻿Arrumar alguns detalhes dos gráficos.
+Corrigir bugs janela cadastro de despesa.
+Corrigir ativação formas de pagamento e cartão que pode ser em 1 parcela.
+Corrigir mensagem de exibição para o usuário.
+Arrumar a tela principal.
+Corrigir exibição da tabela de despesas.
+			
