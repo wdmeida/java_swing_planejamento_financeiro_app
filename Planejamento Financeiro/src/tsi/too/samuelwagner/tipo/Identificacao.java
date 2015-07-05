@@ -3,7 +3,8 @@ package tsi.too.samuelwagner.tipo;
  * A classe Identificacao, possui os atributos que são comuns entre as classes do trabalho. 
  * Os atributos são um <code>int</code> codigo e <code>String</code> descricao.
  * 
- * @author Samuel e Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
 public abstract class Identificacao {
 	protected int codigo;

@@ -5,8 +5,8 @@ import java.util.Calendar;
 /**
  * A classe RendaMensal herda da classe Renda os atributos e possui o 
  * seguinte atributo Valor do tipo <code>Double</code>
- * 
- * @author Samuel e Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
 public class RendaMensal extends Renda {
 	private double valor;

@@ -24,8 +24,8 @@ import com.toedter.calendar.JDateChooser;
 
 /**
  * A classe <code>TrataEventoCadastroDespesa</code> é responsável por tratar os eventos da classe <code>IgCadastraDespesa</code>
- * @author Wagner Almeida
  * @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
 public class TrataEventoCadastroDespesa implements ActionListener {
 	private GerenciamentoDeFinanca gerenciamentoDeFinanca;
@@ -276,6 +276,7 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 	
 	/**
 	 * Valida as datas. Muda a borda para vermelha se for um valor inválido e deixa cinza e volta pra cinza caso seja.
+	 * @param data <code>JDateChooser</code> componente com a data escolhida pelo usuario.
 	 * @return <code>boolean</code> informando <code>true</code> se verdadeiro ou <code>false</code> se falso.
 	 */
 	private boolean validarDatas(JDateChooser data) {

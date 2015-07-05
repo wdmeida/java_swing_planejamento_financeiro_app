@@ -4,8 +4,8 @@ import java.util.Calendar;
 /**
  * A classe Despesa contém atributos e métodos para armazenar as informações das despesas realizadas.
  * Os atributos <code>int</code>codigo e <code>String</code> são herdados da super classe Identificação.
- * 
- * @author Samuel e Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  *
  */
 public class Despesa extends Identificacao {

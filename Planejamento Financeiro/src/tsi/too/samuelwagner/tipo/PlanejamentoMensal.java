@@ -5,7 +5,8 @@ import java.util.Calendar;
  * Define os atributos e métodos da classe PlanejamentoMensal. A classe possui os seguintes atributos:
  * <code>int</code> codigoDespesa referênte ao código da despesa e um <code>Calendar</code> mesAnoPlanejamento
  * referênte ao mês/ano do planejamento.
- * @author Samuel e Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
 public class PlanejamentoMensal {
 	private int codigoDespesa;

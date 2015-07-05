@@ -17,9 +17,8 @@ import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 
 /**A classe <code>OperacoesDoIgPlanejamentoFinanceiro</code> responsavel por ter operações da Classe
  * <code>IgPlanejamentoFinanceiro</code>.
- * @author Samuel
- * @author Wagner
- *
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
 
 public class OperacoesDoIgPlanejamentoFinanceiro {

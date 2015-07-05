@@ -17,8 +17,8 @@ import javax.swing.DefaultComboBoxModel;
 import tsi.too.samuelwagner.operacoes.GerenciamentoDeFinanca;
 /**
  * A classe <code>FuncaoAuxiliar</code>
- * @author Samuel
- * @author Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
 public class FuncaoAuxiliar {
 	private static String nomeMeses[] = {"Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho",
@@ -65,23 +65,23 @@ public class FuncaoAuxiliar {
 		//Obtém o indice da data.
 		for(mes = 0; mes < nomeMeses.length; mes++) if(aux[0].equalsIgnoreCase(nomeMeses[mes])) break;		
 		dataPesquisa.set(Integer.parseInt(aux[1]), mes, Calendar.DAY_OF_MONTH);
-		
+		 
 		return dataPesquisa;
 	}
 	
-	/**
-	 * @param componente
-	 * @param Mensagem
-	 * @param titulo
+	/**Exibe uma mensagem ao usuário.
+	 * @param componente <code>Component</code> localização de onde a tela vai se posicionar.
+	 * @param Mensagem <code>String</code> a mensagem que vai ser exibida.
+	 * @param titulo <code>String</code> titulo da caixa de dialogo.
 	 */
 	public static void exibirMensagem(Component componente, String Mensagem, String titulo) {
 		showMessageDialog(componente, Mensagem, titulo, INFORMATION_MESSAGE);
 	}//exibirMensagem
 	
-	/**
-	 * @param componente
-	 * @param Mensagem
-	 * @param titulo
+	/**Exibe uma mensagem de erro ao usuário.
+	 * @param componente <code>Component</code> localização de onde a tela vai se posicionar.
+	 * @param Mensagem <code>String</code> a mensagem que vai ser exibida.
+	 * @param titulo <code>String</code> titulo da caixa de dialogo.
 	 */
 	public static void exibirMensagemErro(Component componente, String Mensagem, String titulo) {
 		showMessageDialog(componente, Mensagem, titulo, ERROR_MESSAGE);

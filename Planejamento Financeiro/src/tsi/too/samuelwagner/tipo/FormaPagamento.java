@@ -4,7 +4,8 @@ package tsi.too.samuelwagner.tipo;
  * Está classe FormaPagamento guarda a forma como foi efetuado o pagamento da despesa.
  * Possui os seguintes parâmetros: <code>int</code>codigo e <code>String</code>descricao herdados
  * da superclasse e <code>String</code> tipoPagamento.
- * @author Samuel e Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
 public class FormaPagamento extends Identificacao{
 	/**

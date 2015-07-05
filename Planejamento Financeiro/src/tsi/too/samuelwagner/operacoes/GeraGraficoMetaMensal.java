@@ -18,8 +18,8 @@ import tsi.too.samuelwagner.tipo.MetaMensal;
 import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 
 /** Classe reponsavel pela crianção do Grafico de Metas.
- * @author Samuel
- * @author Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
 public class GeraGraficoMetaMensal {
 	private MetaMensal meta;

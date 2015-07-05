@@ -17,13 +17,17 @@ public class TratadorEventoMesRendaComboBox implements ActionListener {
 	
 	private IgPlanejamentoFinanceiro igPlanejamentoFinanceiro;
 	
-	/**Contrutor sobrecarregado.
+	/**Contrutor sobrecarregado do <code>TratadorEventoMesRendaComboBox</code>.
 	 * @param igPlanejamentoFinanceiro <code>IgPlanejamentoFinanceiro</code>
 	 */
 	public TratadorEventoMesRendaComboBox(IgPlanejamentoFinanceiro igPlanejamentoFinanceiro) {
 		this.igPlanejamentoFinanceiro = igPlanejamentoFinanceiro;
 	}
 	
+	/**
+	 * Registra os métodos que trataram os eventos do comboBox MesRenda.
+	 * @param event <code>ActionEvent</code>.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		igPlanejamentoFinanceiro.getRendaTable().setModel(new DefaultTableModel(

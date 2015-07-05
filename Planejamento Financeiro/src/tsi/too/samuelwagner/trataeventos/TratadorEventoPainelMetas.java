@@ -23,8 +23,8 @@ import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 
 /**
  * A classe <code>TratadorEventoPainelMetas</code> registra os métodos responsáveis por tratar os eventos do painel de metas.
- * @author Wagner Almeida
  * @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
 
 public class TratadorEventoPainelMetas implements ActionListener{

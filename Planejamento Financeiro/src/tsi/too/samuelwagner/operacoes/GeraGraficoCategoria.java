@@ -1,7 +1,5 @@
 package tsi.too.samuelwagner.operacoes;
 
-import javax.swing.JProgressBar;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -13,10 +11,22 @@ import tsi.too.samuelwagner.tipo.Despesa;
 import tsi.too.samuelwagner.tipo.RendaMensal;
 import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 
+/**Classe responsável por gerar o Gráfico da Categoria.
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
+ */
 public class GeraGraficoCategoria {
 	
+	/**
+	 * Construtor Default da classe <code>GeraGraficoCategoria</code>
+	 */
 	public GeraGraficoCategoria() {}
 
+	/** Gera o gráfico da categoria segundo o mês informado.
+	 * @param mesAno <code>String</code> mês e ano.
+	 * @param porcentagem <code>boolean</code> verifica se o gráfico e exibido por porcentagem ou valor real.
+	 * @return um <code>ChartPanel</code> retorna o gráfico .
+	 */
 	public ChartPanel geraGraficoBarra(String mesAno, boolean porcentagem){
 		String tipoGrafico;
 		if(porcentagem)
@@ -30,6 +40,11 @@ public class GeraGraficoCategoria {
 		return chartPanel;
 	}
 	
+	/** Gera os dados de cada categoria.
+	 * @param mesAno <code>String</code> mês e ano.
+	 * @param porcentagem <code>boolean</code> verifica se o gráfico e exibido por porcentagem ou valor real.
+	 * @return um <code>CategoryDataset</code> contendo os dados do Gráfico.
+	 */
 	private CategoryDataset geraValoresDoGrafico(String mesAno,boolean porcentagem) {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 			
@@ -53,6 +68,10 @@ public class GeraGraficoCategoria {
 		return dataset;
 	}
 
+	/**Obtém o valor da Receita de um mês determinado.
+	 *  @param mesAno <code>String</code> mês e ano.
+	 * @return um <code>double</code> o valor total das receitas.
+	 */
 	public static double obtemValorReceita(String mesAno){
 		double receita = 0;
 		int numeroReceita = GerenciamentoDeFinanca.getGerenciamentoFincanca().getControleRendaMensal().numerosDeRendas();
@@ -64,16 +83,19 @@ public class GeraGraficoCategoria {
 		return receita;
 	}
 	
+	/** Gera o valor gasto com as despesas de cada categoria e retorna em Porcentagem ou valor Real.
+	 * @param despesas <code>Despesas</code> array de despesas.
+	 * @param porcentagem <code>boolean</code> verifica se o valor será gerado por porcentagem ou valor real.
+	 * @param valorReceita <code>double</code> valor da receita usado para a geração da porcentagem.
+	 * @return um <code>double</code> com a porcentagem ou valor da despesa.
+	 */
 	private double geraValorDespesa(Despesa[] despesas, boolean porcentagem, double valorReceita){
 		double valor = 0;
 		for(Despesa despesa : despesas)
 			valor += despesa.getValorDespesa();
 		if(porcentagem){
-			System.out.println(valor/valorReceita*100);
 			return valor/valorReceita*100;
 		}
-			
 		else return valor;
-		
 	}
 }

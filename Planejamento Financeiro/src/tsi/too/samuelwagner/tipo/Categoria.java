@@ -3,7 +3,8 @@ package tsi.too.samuelwagner.tipo;
  * A classe categoria, armazena informações sobre a categoria dos gastos.
  * Possui os parâmetros <code>int</code>codigo e <code>String</code>descricao herdados
  * da superclasse 
- * @author Samuel e Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  *
  */
 public class Categoria extends Identificacao {

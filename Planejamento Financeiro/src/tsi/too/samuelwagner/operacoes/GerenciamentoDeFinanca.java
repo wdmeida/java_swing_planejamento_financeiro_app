@@ -10,9 +10,8 @@ import tsi.too.samuelwagner.controle.ControleRendaMensal;
 
 /**
  * A classe <code>GerenciamentoDeFinanca</code> controla todas as operações do aplicativo Planejamento Financeiro.
- * @author Samuel
- * @author Wagner
- *
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
 public class GerenciamentoDeFinanca {
 	private static GerenciamentoDeFinanca gerenciamentoFinancas;

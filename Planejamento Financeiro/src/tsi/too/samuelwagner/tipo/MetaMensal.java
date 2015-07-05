@@ -4,7 +4,8 @@ import java.util.Calendar;
 /**
  * A classe MetaMensal armazenar as informações sobre as metas e gastos referentes a um Mes/Ano determinado.
  * Os atributos da classe MetaMensal são um <code>Calendar</code> mesAnoMeta e um <code>double</code> valor.
- * @author Samuel e Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  *
  */
 public class MetaMensal extends Categoria {

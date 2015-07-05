@@ -4,7 +4,8 @@ import java.util.Comparator;
 /**
  * A classe <code>Compara</code> implementa os método responsável realizar a comparação na ordenação <code>String</code>
  *
- * @author Samuel e Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  * @see Comparator
  *
  */

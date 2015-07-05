@@ -15,9 +15,8 @@ import tsi.too.samuelwagner.tipo.RendaMensal;
 import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 
 /**Classe responsavel pela criação dos gráficos <code>Balanço Mensal</code> e <code>Balanço de Pagamento</code>.
- * @author Samuel
- * @author Wagner.
- *
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
 public class GeraGraficoDeBalaco {
 	private  double valorGastos,

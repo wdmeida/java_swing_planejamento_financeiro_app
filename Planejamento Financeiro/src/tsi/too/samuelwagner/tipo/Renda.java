@@ -1,8 +1,8 @@
 package tsi.too.samuelwagner.tipo;
 /**
  * A classe Renda herda os atributos da Classe Abstrata Identificacao
- * 
- * @author Samuel e Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
 public class Renda extends Identificacao {
 	
