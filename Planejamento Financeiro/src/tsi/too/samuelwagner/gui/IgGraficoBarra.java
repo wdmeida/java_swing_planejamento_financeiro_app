@@ -59,7 +59,7 @@ public class IgGraficoBarra extends JDialog {
 		getContentPane().add(comboBoxPanel);
 		comboBoxPanel.setLayout(null);
 		
-		mesAnoComboBox = new JComboBox<String>(OperacoesDoIgPlanejamentoFinanceiro.preencheMesAnteriorMeta());
+		mesAnoComboBox = new JComboBox<String>(OperacoesDoIgPlanejamentoFinanceiro.preencheMesAnteriorDespesa());
 		mesAnoComboBox.setBounds(10, 20, 177, 22);
 		
 		graficoPorcentagemRadio.addActionListener(new ActionListener() {

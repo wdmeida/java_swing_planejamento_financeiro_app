@@ -138,12 +138,12 @@ public class OperacoesDoIgPlanejamentoFinanceiro {
 	 */
 	public static String[] preencheMesAnteriorDespesa(){
 		//Obtem o numero de rendas mensais cadastradas.
-		int numeroMetas = GerenciamentoDeFinanca.getGerenciamentoFincanca().getControleMetaMensal().retornaNumeroDeMetas();
+		int numeroDespesa = GerenciamentoDeFinanca.getGerenciamentoFincanca().getControleDespesa().numerosDeDespesas();
 		Map<String,String> mesesHash = new HashMap<>();
 		String mes;
-		for(int indice = 0; indice < numeroMetas;indice++){
+		for(int indice = 0; indice < numeroDespesa;indice++){
 			mes = FuncaoAuxiliar.obtemMesAno(FuncaoAuxiliar.coverteDataParaString(GerenciamentoDeFinanca.
-					getGerenciamentoFincanca().getControleMetaMensal().obtemMetaMensal(indice).getMesAnoMeta(),true));
+					getGerenciamentoFincanca().getControleDespesa().obtemDespesa(indice).getDataDespesa(),true));
 				mesesHash.put(mes,mes);
 		}
 		return preencherMesAnterior(mesesHash);
