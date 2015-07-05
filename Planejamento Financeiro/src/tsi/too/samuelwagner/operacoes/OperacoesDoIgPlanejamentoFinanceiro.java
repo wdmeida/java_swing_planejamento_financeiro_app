@@ -30,9 +30,11 @@ public class OperacoesDoIgPlanejamentoFinanceiro {
 	 */
 	public static String[] carregarValoresComboBoxMeta(){
 		String[] nomesCategorias = GerenciamentoDeFinanca.getGerenciamentoFincanca().getControleCategoria().obterNomesCategorias();
-		Arrays.sort(nomesCategorias);
-		return nomesCategorias;
-		
+		if(nomesCategorias != null){
+			Arrays.sort(nomesCategorias);
+			return nomesCategorias;
+		}
+		return null;
 	}//carregarValoresComboBox()
 	
 	/**Gera os dados referente a tabela Renda.

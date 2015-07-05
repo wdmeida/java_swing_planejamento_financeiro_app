@@ -549,7 +549,11 @@ public class IgPlanejamentoFinanceiro extends JFrame {
 		metasMensaisPanel.add(selecionarCategoriaLabel);
 		
 		//Cria o selecionarCategoriaComboBox e adiciona ao metasMensaisPanel.
-		selecionarCategoriaComboBox = new JComboBox<String>(OperacoesDoIgPlanejamentoFinanceiro.carregarValoresComboBoxMeta());
+		try {
+			selecionarCategoriaComboBox = new JComboBox<String>(OperacoesDoIgPlanejamentoFinanceiro.carregarValoresComboBoxMeta());
+		} catch (NullPointerException e) {
+			selecionarCategoriaComboBox = new JComboBox<String>();
+		}
 		selecionarCategoriaComboBox.setBounds(152, 26, 214, 25);
 		metasMensaisPanel.add(selecionarCategoriaComboBox);
 		
