@@ -12,7 +12,7 @@ public enum RotuloJanelaCategoria {
 	REPETIDO("Valor digitado já cadastrado no sistema"),
 	SALVO("Categoria cadastrada com sucesso"),
 	CADASTRADAS("Categoria já cadastrada"),
-	INSERIR("Inserir nova"),
+	INSERIR("Nova"),
 	ADICIONAR("Adicionar");
 
 	private String descricao;

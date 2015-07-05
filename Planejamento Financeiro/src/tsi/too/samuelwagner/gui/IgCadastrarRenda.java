@@ -14,6 +14,8 @@ import net.miginfocom.swing.MigLayout;
 import tsi.too.samuelwagner.enumeracoes.RotuloJanelaRendaERendaMensal;
 import tsi.too.samuelwagner.enumeracoes.TituloJanela;
 import tsi.too.samuelwagner.trataeventos.TratadorEventoRenda;
+import java.awt.Font;
+import javax.swing.ImageIcon;
 
 /**A classe <code>IgCadastrarRenda</code> é responsável por construir a janela para adição de novas
  * rendas.
@@ -35,30 +37,36 @@ public class IgCadastrarRenda extends JDialog {
 	public IgCadastrarRenda(TituloJanela tituloJanela, IgPlanejamentoFinanceiro igPlanejamentoFinanceiro) {
 		//Define o titulo da Janela, o tamanho da Janela e o Layout utilizado na Janela.
 		setTitle(RotuloJanelaRendaERendaMensal.TITULO.getDescricao() + tituloJanela.getTitulo());
-		setBounds(100, 100, 312, 100);
-		getContentPane().setLayout(new MigLayout("", "[][][][]", "[][][]"));
+		setBounds(100, 100, 307, 108);
 		setBackground(corPainel);
 		//Cria um JLabel e define seu tamanho.
 		JLabel descricaoLabel = new JLabel("Descrição: ");
-		descricaoLabel.setBounds(20,20, 80,20);
+		descricaoLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		descricaoLabel.setBounds(10,16, 67,14);
 	
 		//Cria um JTextField e difene suas propriedades.
 		areaDescricao = new JTextField();
 		areaDescricao.setToolTipText("Informa a Descri\u00E7\u00E3o da Renda.");
 		areaDescricao.setColumns(20);
-		areaDescricao.setBounds(95, 20, 180,20);
+		areaDescricao.setBounds(87, 13, 198,20);
+		getContentPane().setLayout(null);
 		
 		//Adiciona o JLabel e o JTextField a Janela.
-		getContentPane().add(descricaoLabel, "cell 1 1,alignx center");
-		getContentPane().add(areaDescricao, "cell 2 1 8 1,alignx center");
+		getContentPane().add(descricaoLabel);
+		getContentPane().add(areaDescricao);
+		getContentPane().setBackground(corPainel);
 		
 		//Cria os JButton e adiciona eles a Janela.
-		adicionarButton = new JButton("Adicionar");
+		adicionarButton = new JButton("Add");
+		adicionarButton.setIcon(new ImageIcon(IgCadastrarRenda.class.getResource("/tsi/too/samuelwagner/imagens/checkmark.png")));
+		adicionarButton.setBounds(97, 44, 90, 25);
 		adicionarButton.setToolTipText("Cadastra a Renda.");
-		cancelaButton = new JButton("Cancelar");
+		cancelaButton = new JButton("Sair");
+		cancelaButton.setIcon(new ImageIcon(IgCadastrarRenda.class.getResource("/tsi/too/samuelwagner/imagens/delete.png")));
+		cancelaButton.setBounds(195, 44, 90, 25);
 		cancelaButton.setToolTipText("Cancela o Cadastro.");
-		getContentPane().add(adicionarButton, "cell 8 3");
-		getContentPane().add(cancelaButton, "cell 9 3");
+		getContentPane().add(adicionarButton);
+		getContentPane().add(cancelaButton);
 		
 		//Cria o tratador de Evento e Adiciona ele aos Buttons
 		TratadorEventoRenda tratadorEventoRenda = new TratadorEventoRenda(this, tituloJanela);

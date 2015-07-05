@@ -118,7 +118,7 @@ public class IgCadastrarCategoria extends JDialog {
 		categoriasPanel.add(categoriaScrollPane, BorderLayout.CENTER);
 		
 		//Instância a lista, define os valores e adiciona ao painel rolável.
-		categoriaList = new JList();
+		categoriaList = new JList<String>();
 		categoriaList.setModel(new AbstractListModel<String>() {
 			String[] values = {""};
 			public int getSize() {
@@ -135,8 +135,7 @@ public class IgCadastrarCategoria extends JDialog {
 		categoriaTextField = new JTextField();
 		categoriaTextField.setBounds(210, 101, 141, 26);
 		cadastrarCategoriaPanel.add(categoriaTextField);
-		categoriaTextField.setColumns(10);
-		
+		categoriaTextField.setColumns(10);	
 		
 		//Cria o rótulo sobre a caixa de texto e adiciona ao painel.
 		novaCategoriaLabel = new JLabel("Nova Categoria");
@@ -185,11 +184,11 @@ public class IgCadastrarCategoria extends JDialog {
 	}//getCategoriaList()
 	
 	/**
-	 * Ativa os componentes para o cadastro de categoria e invoca o método responsável pelo cadastro.
+	 * Ativa os componentes para o cadastro de categoria e realiza a chamada ao método responsável pelo cadastro.
 	 */
 	public void cadastrarCategoria() {
 		//Ativa os botões de cadastro e modifica o nome do botão.
-		if(inserirCategoriaButton.getText().equalsIgnoreCase(RotuloJanelaCategoria.INSERIR.getDescricao())){
+		if(inserirCategoriaButton.getActionCommand().equalsIgnoreCase(RotuloJanelaCategoria.INSERIR.getDescricao())){
 			trocaBotoes(true);
 			inserirCategoriaButton.setText(RotuloJanelaCategoria.ADICIONAR.getDescricao());
 			inserirCategoriaButton.setMnemonic(KeyEvent.VK_A);
