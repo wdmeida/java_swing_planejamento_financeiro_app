@@ -168,21 +168,21 @@ public class TratadorEventoCadastroDespesa implements ActionListener {
 	 * Método responsável por ativar e desativar os campos da janela dependendo da forma de pagamento utilizada.
 	 */
 	private void validarFormasPagamento(String formaPagamento){
-
+		
 		//Verifica se a opção é diferente de à vista, caso não seja ativa a barra de inserção de dados.
 		if(FuncaoAuxiliar.comparaString(formaPagamento,	TipoPagamento.A_VISTA.getTipoPagamento())){
 			ativaCampoNumeroParcelas(false);
 			ativarCampoPagamentoCheque(false);
+			return;
 		}
-		else
-			if(!FuncaoAuxiliar.comparaString(formaPagamento, TipoPagamento.CHEQUE.getTipoPagamento())){
-				ativarCampoPagamentoCheque(false);
-				ativaCampoNumeroParcelas(true);
-			}
-			else{
-				ativarCampoPagamentoCheque(true);
-				ativaCampoNumeroParcelas(true);
-			}
+		if(!FuncaoAuxiliar.comparaString(formaPagamento, TipoPagamento.CHEQUE.getTipoPagamento())){
+			ativarCampoPagamentoCheque(false);
+			ativaCampoNumeroParcelas(true);
+		}
+		else{
+			ativarCampoPagamentoCheque(true);
+			ativaCampoNumeroParcelas(true);
+		}
 	}//cadastrarFormaPagamento
 	
 	/**
