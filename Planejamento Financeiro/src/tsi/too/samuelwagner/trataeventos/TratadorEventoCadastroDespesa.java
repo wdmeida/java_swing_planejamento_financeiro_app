@@ -190,7 +190,7 @@ public class TratadorEventoCadastroDespesa implements ActionListener {
 	 * @param ativar <code>boolean</code> com os valores <code>true</code> para ativar ou <code>false</code> para desativar.
 	 */
 	private void ativarCampoPagamentoCheque(boolean ativar){
-		if(ativar) cadastrarDespesas.getNumeroChequeTextField().setEnabled(true);
+		if(ativar) cadastrarDespesas.getNumeroChequeTextField().setEditable(true);
 		else cadastrarDespesas.getNumeroChequeTextField().setEditable(false);	
 	}//ativarCamposPagementoCheque
 	
@@ -199,7 +199,7 @@ public class TratadorEventoCadastroDespesa implements ActionListener {
 	 * @param ativar <code>boolean</code> com os valores <code>true</code> para ativar ou <code>false</code> para desativar.
 	 */
 	private void ativaCampoNumeroParcelas(boolean ativar){
-		if(ativar) cadastrarDespesas.getQuantidadeParcelasTextField().setEnabled(true);
+		if(ativar) cadastrarDespesas.getQuantidadeParcelasTextField().setEditable(true);
 		else cadastrarDespesas.getQuantidadeParcelasTextField().setEditable(false);
 	}//ativarCampoNumeroParcelas
 	

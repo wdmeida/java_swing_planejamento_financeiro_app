@@ -226,7 +226,7 @@ public class IgCadastrarDespesas extends JDialog {
 		numeroChequeTextField.setToolTipText(RotuloJanelaDespesa.MSG_CHEQUE.getDescricao());
 		numeroChequeTextField.setBounds(379, 31, 148, 20);
 		infoAdicionalPanel.add(numeroChequeTextField);
-		numeroChequeTextField.setEnabled(false);
+		numeroChequeTextField.setEditable(false);
 		numeroChequeTextField.setColumns(10);
 		
 		camposObrigatoriosLabel = new JLabel("* Posicione o mouse sobre os campos em vermelho.");
