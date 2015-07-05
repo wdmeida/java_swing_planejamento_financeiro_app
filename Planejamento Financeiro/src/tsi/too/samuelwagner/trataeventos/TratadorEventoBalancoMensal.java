@@ -19,7 +19,7 @@ import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
  * @author Samuel Gonçalves
  * @author Wagner Almeida
  */
-public class TratadorEventosBalancoMensal implements ActionListener {
+public class TratadorEventoBalancoMensal implements ActionListener {
 	private IgPlanejamentoFinanceiro igPlanejamentoFinanceiro;
 	
 	/**
@@ -27,7 +27,7 @@ public class TratadorEventosBalancoMensal implements ActionListener {
 	 * @param igPlanejamentoFinanceiro <code>TratadorEventosBalancoMensal</code> com a referência da janela principal
 	 * para poder acessar os componentes e realizar as operações.
 	 */
-	public TratadorEventosBalancoMensal(IgPlanejamentoFinanceiro igPlanejamentoFinanceiro) {
+	public TratadorEventoBalancoMensal(IgPlanejamentoFinanceiro igPlanejamentoFinanceiro) {
 		this.igPlanejamentoFinanceiro = igPlanejamentoFinanceiro;
 	}//TratadorEventosBalancoMensal
 	

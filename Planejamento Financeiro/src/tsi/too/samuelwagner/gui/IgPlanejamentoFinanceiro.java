@@ -37,7 +37,7 @@ import tsi.too.samuelwagner.operacoes.GerenciamentoDeFinanca;
 import tsi.too.samuelwagner.operacoes.OperacoesDoIgPlanejamentoFinanceiro;
 import tsi.too.samuelwagner.trataeventos.TratadorEventoMesRendaComboBox;
 import tsi.too.samuelwagner.trataeventos.TratadorEventoPainelMetas;
-import tsi.too.samuelwagner.trataeventos.TratadorEventosBalancoMensal;
+import tsi.too.samuelwagner.trataeventos.TratadorEventoBalancoMensal;
 import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 /**
  * A classe IgPlanejamentoFinanceiro implementa o Interface Gráfica do Usuário (GUI) da janela principal do aplicativo 
@@ -964,7 +964,7 @@ public class IgPlanejamentoFinanceiro extends JFrame {
 		mesBalancoComboBox = new JComboBox<String>(FuncaoAuxiliar.obterMesesComboBox());
 		mesBalancoComboBox.setBounds(593, 37, 152, 20);
 		balancoMensalPanel.add(mesBalancoComboBox);
-		TratadorEventosBalancoMensal tratadorBalancoMensal = new TratadorEventosBalancoMensal(IgPlanejamentoFinanceiro.this);
+		TratadorEventoBalancoMensal tratadorBalancoMensal = new TratadorEventoBalancoMensal(IgPlanejamentoFinanceiro.this);
 		//Registra o tratador de eventos do comboBox
 		mesBalancoComboBox.addActionListener(tratadorBalancoMensal);
 		

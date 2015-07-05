@@ -19,7 +19,7 @@ import javax.swing.border.TitledBorder;
 
 import tsi.too.samuelwagner.enumeracoes.RotuloJanelaDespesa;
 import tsi.too.samuelwagner.operacoes.GerenciamentoDeFinanca;
-import tsi.too.samuelwagner.trataeventos.TrataEventoCadastroDespesa;
+import tsi.too.samuelwagner.trataeventos.TratadorEventoCadastroDespesa;
 
 import com.toedter.calendar.JDateChooser;
 import java.awt.Font;
@@ -46,7 +46,11 @@ public class IgCadastrarDespesas extends JDialog {
 	private JLabel camposObrigatoriosLabel;
 	private static Color corPainel = new Color(248, 248, 248);
 	
-	
+	/**
+	 * Construtor da classe <code>IgCadastrarDespesas</code>, responsável por construir a janela gráfica de cadastro de
+	 * despesa.
+	 * @param planejamentoFinanceiro <code>IgPlanejamentoFinanceiro</code> com a referência da classe principal do aplicativo.
+	 */
 	public IgCadastrarDespesas(IgPlanejamentoFinanceiro planejamentoFinanceiro) {
 		//Obtém a referência da janela principal
 		this.planejamentoFinanceiro = planejamentoFinanceiro;
@@ -65,7 +69,7 @@ public class IgCadastrarDespesas extends JDialog {
 		setLocationRelativeTo(planejamentoFinanceiro);
 		
 		//Define o ouvinte que responderá pelos eventos da janela.
-		TrataEventoCadastroDespesa trataEvento = new TrataEventoCadastroDespesa(this,planejamentoFinanceiro);
+		TratadorEventoCadastroDespesa trataEvento = new TratadorEventoCadastroDespesa(this,planejamentoFinanceiro);
 				
 		//Cria o painel principal da janela e adiciona ao painel.
 		JPanel panel = new JPanel();
@@ -100,7 +104,7 @@ public class IgCadastrarDespesas extends JDialog {
 		
 		//Cria o descricaoTextField e adiciona ao painel.
 		descricaoTextField = new JTextField();
-		descricaoTextField.setToolTipText("Descri\u00E7\u00E3o da despesa.");
+		descricaoTextField.setToolTipText(RotuloJanelaDespesa.MSG_DESCRICAO.getDescricao());
 		descricaoTextField.setForeground(Color.BLACK);
 		descricaoTextField.setBounds(140, 35, 387, 20);
 		infoDespesaPanel.add(descricaoTextField);
@@ -111,14 +115,15 @@ public class IgCadastrarDespesas extends JDialog {
 		valorDespesaLabel.setBounds(13, 97, 109, 16);
 		infoDespesaPanel.add(valorDespesaLabel);
 		
-		
 		//Cria dataDespesaDateChooser e o dataPagamentoDateChooser e adiciona ao painel.
 		dataDespesaDateChooser = new JDateChooser();
+		dataDespesaDateChooser.setToolTipText(RotuloJanelaDespesa.MGS_DESPESA__DATA.getDescricao());
 		dataDespesaDateChooser.setBounds(140, 65, 122, 20);
 		infoDespesaPanel.add(dataDespesaDateChooser);
 		
 		dataPagamentoDateChooser = new JDateChooser();
 		dataPagamentoDateChooser.setBounds(407, 65, 121, 20);
+		dataPagamentoDateChooser.setToolTipText(RotuloJanelaDespesa.MGS_PAGAMENTO_DATA.getDescricao());
 		infoDespesaPanel.add(dataPagamentoDateChooser);
 		
 		JLabel formaDePagamentoLabel = new JLabel("Forma de Pagamento:");
@@ -137,8 +142,7 @@ public class IgCadastrarDespesas extends JDialog {
 		//Define para que nenhuma forma de pagamento esteja pré selecionada.
 		formaPagamentoComboBox.setSelectedIndex(0);
 		
-		formaPagamentoComboBox.addActionListener(trataEvento);
-		
+		formaPagamentoComboBox.addActionListener(trataEvento);	
 		
 		//Cria o JComboBox das categorias e adiciona ao painel.
 		categoriaComboBox = new JComboBox<String>();
@@ -161,7 +165,7 @@ public class IgCadastrarDespesas extends JDialog {
 		
 		//Cria o valorTextField e adiciona ao painel.
 		valorTextField = new JTextField();
-		valorTextField.setToolTipText("Valor da despesa em reais e com ponto no lugar de v\u00EDrgula.");
+		valorTextField.setToolTipText(RotuloJanelaDespesa.MSG_VALOR.getDescricao());
 		valorTextField.setBounds(140, 95, 100, 20);
 		infoDespesaPanel.add(valorTextField);
 		valorTextField.setColumns(10);
@@ -212,24 +216,24 @@ public class IgCadastrarDespesas extends JDialog {
 		
 		//Cria os jTextField do painel adicional e insere no neste.
 		quantidadeParcelasTextField = new JTextField();
-		quantidadeParcelasTextField.setToolTipText("N\u00FAmero de parcelas do pagamento.");
+		quantidadeParcelasTextField.setToolTipText(RotuloJanelaDespesa.MSG_AVISTA.getDescricao());
 		quantidadeParcelasTextField.setBounds(140, 31, 82, 20);
 		infoAdicionalPanel.add(quantidadeParcelasTextField);
-		quantidadeParcelasTextField.setEnabled(false);
 		quantidadeParcelasTextField.setColumns(10);
 		
 		//Cria o numeroChequeTextField e adiciona ao painel.
 		numeroChequeTextField = new JTextField();
-		numeroChequeTextField.setToolTipText("N\u00FAmero do cheque.");
+		numeroChequeTextField.setToolTipText(RotuloJanelaDespesa.MSG_CHEQUE.getDescricao());
 		numeroChequeTextField.setBounds(379, 31, 148, 20);
 		infoAdicionalPanel.add(numeroChequeTextField);
 		numeroChequeTextField.setEnabled(false);
 		numeroChequeTextField.setColumns(10);
 		
-		camposObrigatoriosLabel = new JLabel("* Campos de preenchimento obrigat\u00F3rio");
+		camposObrigatoriosLabel = new JLabel("* Posicione o mouse sobre os campos em vermelho.");
+		camposObrigatoriosLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		camposObrigatoriosLabel.setVisible(false);
 		camposObrigatoriosLabel.setForeground(Color.RED);
-		camposObrigatoriosLabel.setBounds(12, 333, 239, 16);
+		camposObrigatoriosLabel.setBounds(12, 323, 262, 25);
 		panel.add(camposObrigatoriosLabel);
 		
 		//Registra o tratador de eventos da janela.
@@ -374,7 +378,7 @@ public class IgCadastrarDespesas extends JDialog {
 			for(int indice = 0; indice < formasDePagamento.length; indice++)
 				pagamento.addElement(formasDePagamento[indice]);
 		}
-		pagamento.addElement(RotuloJanelaDespesa.NOVA_FORMA_PAGAMENTO.getDescricao());
+		//pagamento.addElement(RotuloJanelaDespesa.NOVA_FORMA_PAGAMENTO.getDescricao());
 		formaPagamentoComboBox.setModel(pagamento);
 	}//carregarFormasPagamento()
 }//class IgCadastrarDespesas

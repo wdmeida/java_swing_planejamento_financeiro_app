@@ -10,16 +10,17 @@ public enum RotuloJanelaDespesa {
 	TITULO("Cadastrar Despesa"),
 	NOVA_CATEGORIA("Nova categoria..."),
 	NOVA_FORMA_PAGAMENTO("Nova forma de Pagamento..."),
-	MSG_DADOS_INVALIDOS("Campos de preenchimento obrigatório devem obedecer ao seguinte critério:\n\n"
-			+ "Descrição - Deve conter o nome da despesa.\n"
-			+ "Data de Pagamento - Data no formato dd/mm/aaaa.\n"
-			+ "Data da Despesa - Data no formato dd/mm/aaaa.\n"
-			+ "Categoria - Deve conter a categoria em que a despesa se enquadra.\n"
-			+ "Forma de pagamento - Forma de pagamento utilizada.\n"
-			+ "Número do cheque - Quando a opção for cheque, está opção deverá ser utilizada.\n"
-			+ "Quantidade de parcelas - Quando o pagamento não for à vista, está opção deverá ser utilizada.\n"),
-	MSG_DADOS_CORRETOS("Dados cadastrados com sucesso."),
-	MSG_DADOS_DUPLICADOS("Dados já cadastrados no sistema.");
+	MSG_DADOS_INVALIDOS("Dados da despesa ausentes ou inválidos."),
+	MSG_DADOS_CORRETOS("Despesa cadastrada com sucesso."),
+	MSG_DADOS_DUPLICADOS("Despesa já cadastrada no sistema."),
+	MSG_CATEGORIA("Deve conter a categoria em que a despesa se enquadra."),
+	MGS_PAGAMENTO_DATA("Data de pagamento da despesa - Utilizar formato dd/mm/aaaa."),
+	MGS_DESPESA__DATA("Data em que foi realizada a despesa - Utilizar formato dd/mm/aaaa."),
+	MSG_DESCRICAO("Deve conter a descrição da despesa."),
+	MSG_VALOR("Valor da despesa deve ser numérico."),
+	MSG_FORMA_PAGAMENTO("Forma de pagamento - Forma de pagamento utilizada."),
+	MSG_CHEQUE("Quando a opção for cheque, está opção deverá ser utilizada."),
+	MSG_AVISTA("Quando o pagamento não for à vista, está opção deverá ser utilizada.");
 
 	private String descricao;
 	

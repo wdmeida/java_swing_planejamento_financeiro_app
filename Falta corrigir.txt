@@ -7,6 +7,7 @@ Corrigir mensagem de exibição para o usuário.
 Arrumar a tela principal.
 Corrigir exibição da tabela de despesas.
 Fazer uma tela de help. (Tô pensando em fazer em html porque é mais rápido).
+Dividir o valor da despesa.
 
 Possíveis melhorias
 
