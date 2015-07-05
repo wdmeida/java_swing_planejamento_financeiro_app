@@ -94,7 +94,10 @@ public class GeraGraficoCategoria {
 		for(Despesa despesa : despesas)
 			valor += despesa.getValorDespesa();
 		if(porcentagem){
-			return valor/valorReceita*100;
+			if(valorReceita == 0)
+				return 0;
+			else
+				return valor/valorReceita*100;
 		}
 		else return valor;
 	}
