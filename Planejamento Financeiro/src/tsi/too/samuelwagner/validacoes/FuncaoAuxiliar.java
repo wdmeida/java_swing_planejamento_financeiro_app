@@ -133,6 +133,8 @@ public class FuncaoAuxiliar {
 		Arrays.sort(meses);
 		
 		DefaultComboBoxModel<String> periodos = new DefaultComboBoxModel<String>(meses);
+		if(numeroDespesas == 0)
+			periodos.insertElementAt("", 0);
 		return periodos;
 	}//Meses Despesa
 	
