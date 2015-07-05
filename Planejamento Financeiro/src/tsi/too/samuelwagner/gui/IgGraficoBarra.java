@@ -2,7 +2,9 @@ package tsi.too.samuelwagner.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -12,9 +14,6 @@ import javax.swing.border.TitledBorder;
 import tsi.too.samuelwagner.enumeracoes.TituloJanela;
 import tsi.too.samuelwagner.operacoes.GeraGraficoCategoria;
 import tsi.too.samuelwagner.operacoes.OperacoesDoIgPlanejamentoFinanceiro;
-
-import javax.swing.ButtonGroup;
-import java.awt.event.KeyEvent;
 
 public class IgGraficoBarra extends JDialog {
 	private final ButtonGroup buttonGroup = new ButtonGroup();

@@ -74,7 +74,7 @@ public class IgCadastrarRenda extends JDialog {
 		
 		//Define as teclas Mnemonic dos Buttons.
 		adicionarButton.setMnemonic(KeyEvent.VK_A);
-		cancelaButton.setMnemonic(KeyEvent.VK_C);
+		cancelaButton.setMnemonic(KeyEvent.VK_S);
 		
 		//Define o tratador de evento quando o usuario clicar para fechar a janela.
 		addWindowListener(new WindowAdapter() {

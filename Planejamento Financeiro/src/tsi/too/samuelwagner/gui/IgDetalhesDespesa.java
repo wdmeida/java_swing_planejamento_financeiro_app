@@ -9,6 +9,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Calendar;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -16,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
@@ -23,8 +25,6 @@ import javax.swing.table.DefaultTableModel;
 import tsi.too.samuelwagner.operacoes.GerenciamentoDeFinanca;
 import tsi.too.samuelwagner.tipo.Despesa;
 import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
-import javax.swing.UIManager;
-import javax.swing.ImageIcon;
 
 /**
  * A classe <code>IgDetalhesDespesa</code> exibe a janela com todas as informações das despesas.
@@ -131,6 +131,7 @@ public class IgDetalhesDespesa extends JDialog {
 			}
 		});
 		
+		periodoComboBox.setSelectedIndex(0);
 		setVisible(true);
 	}//IgDetalhesDespesa()
 	
@@ -143,23 +144,26 @@ public class IgDetalhesDespesa extends JDialog {
 	 */
 	private String[][] carregarDespesas(String mesAno) {		
 		//Obtém o mesAno já em calendar
-		Calendar data = FuncaoAuxiliar.converteDataParaCalendar(mesAno);
+		if(!mesAno.equals("")){
+			Calendar data = FuncaoAuxiliar.converteDataParaCalendar(mesAno);
 		
-		//Obtém as despesas do mês pesquisado.
-		Despesa despesas[] = gerenciamentoDeFinanca.getControleDespesa().pesquisarDespesas(data);
+			//Obtém as despesas do mês pesquisado.
+			Despesa despesas[] = gerenciamentoDeFinanca.getControleDespesa().pesquisarDespesas(data);
 		
-		String dados[][] = new String[despesas.length][8];
-		
-		for(int linha = 0; linha < despesas.length; linha++){
-				dados[linha][0] = despesas[linha].getDescricao(); //Descrição.
-				dados[linha][1] = gerenciamentoDeFinanca.getControleCategoria().pesquisaCategoria(despesas[linha].getCodigoCategoria()); //Categoria
-				dados[linha][2] = FuncaoAuxiliar.coverteDataParaString(despesas[linha].getDataPagamento(),true); //Data Pagamento.
-				dados[linha][3] = FuncaoAuxiliar.coverteDataParaString(despesas[linha].getDataDespesa(),true); //Data Despesa.
-				dados[linha][4] = gerenciamentoDeFinanca.getControleFormaPagamento().pesquisaFormaPagamento(despesas[linha].getCodigoPagamento()); //Forma de Pagamento
-				dados[linha][5] = despesas[linha].getNumeroCheque(); //Número Cheque
-				dados[linha][6] = Integer.toString(despesas[linha].getNumeroParcelas()); //Número Parcelas
-				dados[linha][7] = String.format("R$ %1.2f",despesas[linha].getValorDespesa()); //Valor Despesa
+			String dados[][] = new String[despesas.length][8];
+			
+			for(int linha = 0; linha < despesas.length; linha++){
+					dados[linha][0] = despesas[linha].getDescricao(); //Descrição.
+					dados[linha][1] = gerenciamentoDeFinanca.getControleCategoria().pesquisaCategoria(despesas[linha].getCodigoCategoria()); //Categoria
+					dados[linha][2] = FuncaoAuxiliar.coverteDataParaString(despesas[linha].getDataPagamento(),true); //Data Pagamento.
+					dados[linha][3] = FuncaoAuxiliar.coverteDataParaString(despesas[linha].getDataDespesa(),true); //Data Despesa.
+					dados[linha][4] = gerenciamentoDeFinanca.getControleFormaPagamento().pesquisaFormaPagamento(despesas[linha].getCodigoPagamento()); //Forma de Pagamento
+					dados[linha][5] = despesas[linha].getNumeroCheque(); //Número Cheque
+					dados[linha][6] = Integer.toString(despesas[linha].getNumeroParcelas()); //Número Parcelas
+					dados[linha][7] = String.format("R$ %1.2f",despesas[linha].getValorDespesa()); //Valor Despesa
+			}
+			return dados;
 		}
-		return dados;
+		return null;
 	}//carregarDespesas()
 }//class IgDetalhesDespesa
