@@ -57,6 +57,7 @@ public class IgSobre extends JDialog {
 		sobrePanel.add(lblPlanejamentoFinanceiro);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(corPainel);
 		panel.setBorder(new TitledBorder(null, "Sobre", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel.setBounds(10, 46, 371, 257);
 		sobrePanel.add(panel);

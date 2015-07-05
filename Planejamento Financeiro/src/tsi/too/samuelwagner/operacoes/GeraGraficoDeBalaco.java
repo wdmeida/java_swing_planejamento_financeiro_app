@@ -251,11 +251,14 @@ public class GeraGraficoDeBalaco {
 	
 	private void finaliza(){
 		//Reseta as variaveis;
-		valorCartao = 0;
-		valorVista = 0;
-		valorCrediario = 0;
-		valorCheque = 0;
-		valorFinaciameto = 0;
-		valorParcelado = 0;
+		valorGastos = 0;
+		   valorInvestimentos = 0;
+		   valorReceita = 0;
+		   valorCartao = 0;
+		   valorVista = 0;
+		   valorCrediario = 0;
+		   valorCheque = 0;
+		   valorFinaciameto = 0;
+		   valorParcelado = 0;
 	}
 }

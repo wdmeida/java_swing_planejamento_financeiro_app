@@ -166,6 +166,7 @@ public class TratadorEventoCadastroDespesa implements ActionListener {
 	
 	/**
 	 * Método responsável por ativar e desativar os campos da janela dependendo da forma de pagamento utilizada.
+	 * @param formaPagamento <code>String</code>.
 	 */
 	private void validarFormasPagamento(String formaPagamento){
 		
