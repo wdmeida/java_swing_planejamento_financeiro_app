@@ -26,6 +26,7 @@ import tsi.too.samuelwagner.controle.ControleCategoria;
 import tsi.too.samuelwagner.enumeracoes.RotuloJanelaCategoria;
 import tsi.too.samuelwagner.operacoes.GerenciamentoDeFinanca;
 import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 /**
  * A classe <code>IgCadastrarCategoria</code> é responsável por construir a janela para adição de novas
@@ -47,10 +48,11 @@ public class IgCadastrarCategoria extends JDialog {
 	 * Constrói a janela de cadastro de categoria.
 	 * 
 	 *  @param planejamento <code>IgPlanejamentoFinanceiro</code> com a referência da janela principal.
-	 *  @param compontente <code>Component</code> ao qual a janela se posicionará.
+	 *  @param componente <code>Component</code> ao qual a janela se posicionará.
 	 *  @param controleCategoria <code>ControleCategoria</code> com a referência do objeto responsável por salvar os dados.
 	 */
 	public IgCadastrarCategoria(IgPlanejamentoFinanceiro planejamento, Component componente, ControleCategoria controleCategoria) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(IgCadastrarCategoria.class.getResource("/tsi/too/samuelwagner/imagens/bill.png")));
 		this.planejamentoFinanceiro = planejamento;
 		this.controleCategoria = controleCategoria;
 		

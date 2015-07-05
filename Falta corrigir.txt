@@ -1,15 +1,6 @@
 ﻿Importante
 
-Arrumar alguns detalhes dos gráficos (principalmente o de metas).
-Corrigir bugs janela cadastro de despesa.
-Corrigir ativação formas de pagamento e cartão que pode ser em 1 parcela.
-Corrigir mensagem de exibição para o usuário.
 Arrumar a tela principal.
-Corrigir exibição da tabela de despesas.
 Fazer uma tela de help. (Tô pensando em fazer em html porque é mais rápido).
-Dividir o valor da despesa.
 
-Possíveis melhorias
-
-Colocar os gráficos pra já aparecerem com os gráficos do último mês por padrão.
-Arrumar para o usuário poder digitar virgula ao invés de ponto.			
+		

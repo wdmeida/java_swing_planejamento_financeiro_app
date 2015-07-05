@@ -15,7 +15,7 @@ import tsi.too.samuelwagner.tipo.Despesa;
 import tsi.too.samuelwagner.tipo.RendaMensal;
 import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 
-/**A classe <code>OperacoesDoIgPlanejamentoFinanceiro</code> responsavel por ter operações da Classe
+/**A classe <code>OperacoesDoIgPlanejamentoFinanceiro</code> é responsável pelas operações da classe
  * <code>IgPlanejamentoFinanceiro</code>.
  * @author Samuel Gonçalves
  * @author Wagner Almeida

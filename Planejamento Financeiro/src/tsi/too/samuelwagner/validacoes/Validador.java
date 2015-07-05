@@ -1,6 +1,7 @@
 package tsi.too.samuelwagner.validacoes;
 
-/** Essa Classe e reponsavel implementar métodos que valida dados do programa.
+/** A classe <code>Validador</code> é reponsavel por implementar os métodos que validão as entradas
+ * do usuário no programa.
  * @author Samuel Gonçalves
  * @author Wagner Almeida
  */
@@ -39,14 +40,14 @@ public class Validador {
 	}
 	
 	/**
-	 * Verifica se a <code>String</code> passada e um número real Positivo.
+	 * Verifica se a <code>String</code> passada e um número real positivo.
 	 * @param numero <code>String</code> que será usada para a validação.
 	 * @return Retorna true <code>boolean</code> para número real e false <code>boolean</code>
 	 * para outro tipo de caracter.
 	 */
 	public static boolean validaNumeroReal(String numero) {
 		try {
-			if(Double.parseDouble(numero) <= 0)
+			if(Double.parseDouble(numero) <= 0 || numero.indexOf("e") != -1) 
 				return false;
 		} catch (Exception e) {
 			return false;

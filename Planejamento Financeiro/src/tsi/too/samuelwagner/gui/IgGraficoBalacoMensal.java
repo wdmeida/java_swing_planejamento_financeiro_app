@@ -2,6 +2,7 @@ package tsi.too.samuelwagner.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -38,17 +39,21 @@ public class IgGraficoBalacoMensal extends JDialog {
 	private JPanel graficoPanel;
 	private JComboBox<String> mesComboBox;
 	private GeraGraficoDeBalaco geraGraficoBalacoMensal;
+	private static Color corPainel = new Color(248, 248, 248);
 	/**
 	 * Contrutor sobrecarregado da classe <code>IgGrafico</code>.
 	 * @param planejamento <code>IgPlanejamento</code> com a referência da janela principal.
 	 * @param tituloJanela <code>TituloJanela</code> com o título da janela.
 	 */
 	public IgGraficoBalacoMensal(IgPlanejamentoFinanceiro planejamento, TituloJanela tituloJanela) {
+		getContentPane().setBackground(corPainel);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(IgCadastrarDespesas.class.getResource("/tsi/too/samuelwagner/imagens/stats58.png")));
+		
 		if(tituloJanela.getTitulo().equalsIgnoreCase(TituloJanela.IG_GRAFICO.getTitulo()))
 			geraPanelBalancoMensal(tituloJanela);
 		else
 			if(tituloJanela.getTitulo().equalsIgnoreCase(TituloJanela.IG_GRAFICO_DETALHE.getTitulo()))
-				geraPanelBalancoMensalDetalahdo(tituloJanela);
+				geraPanelBalancoMensalDetalhado(tituloJanela);
 		
 		getContentPane().add(graficoPanel);
 		
@@ -75,8 +80,9 @@ public class IgGraficoBalacoMensal extends JDialog {
 		//Tamanho pequeno.
 		//setSize(820, 394);
 		getContentPane().setLayout(null);
-		
+		getContentPane().setBackground(corPainel);
 		graficoPanel = new JPanel();
+		graficoPanel.setBackground(corPainel);
 		graficoPanel.setBorder(new TitledBorder(null, "Balanço Mensal", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		graficoPanel.setBounds(10, 11, 702, 454);
 		graficoPanel.setLayout(new BorderLayout());
@@ -98,6 +104,7 @@ public class IgGraficoBalacoMensal extends JDialog {
 		});
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(corPainel);
 		panel.setBorder(new TitledBorder(null, "Informa\u00E7\u00E3o do Balan\u00E7o Mensal", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel.setBounds(722, 199, 230, 266);
 		getContentPane().add(panel);
@@ -156,7 +163,7 @@ public class IgGraficoBalacoMensal extends JDialog {
 	/** Gera o painel que contera o gráfico Balanco Pagamento.
 	 * @param tituloJanela <code>TituloJanela</code>.
 	 */
-	private void geraPanelBalancoMensalDetalahdo(TituloJanela tituloJanela) {
+	private void geraPanelBalancoMensalDetalhado(TituloJanela tituloJanela) {
 		
 		//Define as propriedades da janela de exibição do gráfico
 		setTitle("Balaço Mensal");
@@ -164,8 +171,10 @@ public class IgGraficoBalacoMensal extends JDialog {
 		//Tamanho pequeno.
 		//setSize(820, 394);
 		getContentPane().setLayout(null);
+		getContentPane().setBackground(corPainel);
 		
 		graficoPanel = new JPanel();
+		graficoPanel.setBackground(corPainel);
 		graficoPanel.setBorder(new TitledBorder(null, "Balanço Mensal", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		graficoPanel.setBounds(10, 11, 702, 454);
 		graficoPanel.setLayout(new BorderLayout());
@@ -186,6 +195,7 @@ public class IgGraficoBalacoMensal extends JDialog {
 		});
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(corPainel);
 		panel.setBorder(new TitledBorder(null, "Informa\u00E7\u00E3o do Balan\u00E7o Mensal", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel.setBounds(722, 96, 230, 369);
 		getContentPane().add(panel);

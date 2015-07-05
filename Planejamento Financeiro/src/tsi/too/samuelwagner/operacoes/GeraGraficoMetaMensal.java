@@ -17,7 +17,7 @@ import tsi.too.samuelwagner.tipo.Despesa;
 import tsi.too.samuelwagner.tipo.MetaMensal;
 import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 
-/** Classe reponsavel pela crianção do Grafico de Metas.
+/** Classe reponsável pela crianção do Grafico de Metas.
  * @author Samuel Gonçalves
  * @author Wagner Almeida
  */

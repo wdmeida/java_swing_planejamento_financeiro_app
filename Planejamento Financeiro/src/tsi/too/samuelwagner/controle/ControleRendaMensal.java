@@ -10,10 +10,10 @@ import tsi.too.samuelwagner.tipo.RendaMensal;
 
 /**A classe <code>ControleRendaMensal</code> implementa os métodos necessarios para utilizar as operações no <code>ArquivoRendaMensal</code>.
  * 
- * @author Samuel
- * @author Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
-public class ControleRendaMensal implements Controle{
+public class ControleRendaMensal{
 	private ArquivoRendaMensal arquivoRendaMensal;
 	
 	/**

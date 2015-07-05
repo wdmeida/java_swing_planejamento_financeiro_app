@@ -8,8 +8,8 @@ import br.samuelwgner.arquivobinario.ArquivoBinario;
 
 /**
  * Define as funções responsáveis por salvar e recuperar um objeto de um arquivo em disco.
- * 
- * @author Samuel e Wagner
+ *  @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
 public class ArquivoMetaMensal extends ArquivoBinario {
 	

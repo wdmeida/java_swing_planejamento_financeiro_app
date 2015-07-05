@@ -20,11 +20,11 @@ import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 import tsi.too.samuelwagner.validacoes.Validador;
 
 /**A classe <code>ControleCategoria</code> implementa os métodos necessarios para utilizar as operações no <code>ArquivoCategoria</code>.
- * @author Samuel
- * @author Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  *
  */
-public class ControleCategoria implements Controle {
+public class ControleCategoria  {
 	private ArquivoCategoria arquivoCategoria;
 	private IgCadastrarCategoria cadastrarCategoria;
 	

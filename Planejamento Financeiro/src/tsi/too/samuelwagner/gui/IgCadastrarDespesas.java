@@ -24,6 +24,7 @@ import tsi.too.samuelwagner.trataeventos.TratadorEventoCadastroDespesa;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 /**A classe <code>IgCadastrarDespesa</code> é responsável por construir a janela para adição de novas
  * despesas do usuário.
@@ -52,6 +53,7 @@ public class IgCadastrarDespesas extends JDialog {
 	 * @param planejamentoFinanceiro <code>IgPlanejamentoFinanceiro</code> com a referência da classe principal do aplicativo.
 	 */
 	public IgCadastrarDespesas(IgPlanejamentoFinanceiro planejamentoFinanceiro) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(IgCadastrarDespesas.class.getResource("/tsi/too/samuelwagner/imagens/excel.png")));
 		//Obtém a referência da janela principal
 		this.planejamentoFinanceiro = planejamentoFinanceiro;
 		

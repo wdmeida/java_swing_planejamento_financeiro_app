@@ -18,11 +18,11 @@ import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 import tsi.too.samuelwagner.validacoes.Validador;
 
 /**A classe <code>ControleFormaPagamento</code> implementa os métodos necessarios para utilizar as operações no <code>ArquivoFormaPagamento</code>.
- * @author Samuel
- * @author Wagner
+ *  @author Samuel Gonçalves
+ * @author Wagner Almeida
  *
  */
-public class ControleFormaPagamento implements Controle{
+public class ControleFormaPagamento {
 	private ArquivoFormaPagamento arquivoFormaPagamento;
 	
 	/**

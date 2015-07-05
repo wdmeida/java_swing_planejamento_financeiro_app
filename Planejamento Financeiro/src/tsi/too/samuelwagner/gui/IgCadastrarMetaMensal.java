@@ -5,6 +5,7 @@ import static javax.swing.JOptionPane.showMessageDialog;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -33,7 +34,8 @@ import com.toedter.calendar.JYearChooser;
 /**
  * A classe <code>IgCadastrarMetaMensal</code> é responsável por criar a interface gráfica responsável por 
  * cadastrar uma nova meta pro usuário.
- * @author Wagner
+ * @author Wagner Almeida
+ * @author Samuel Gonçalves
  *
  */
 public class IgCadastrarMetaMensal extends JDialog {
@@ -51,6 +53,8 @@ public class IgCadastrarMetaMensal extends JDialog {
 	 * @param controleMetaMensal <code>ControleMetaMensal</code>
 	 */
 	public IgCadastrarMetaMensal(IgPlanejamentoFinanceiro planejamentoFinanceiro, ControleMetaMensal controleMetaMensal) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(IgCadastrarDespesas.class.getResource("/tsi/too/samuelwagner/imagens/edit.png")));
+
 		setTitle("Cadastrar Meta Mensal");
 		
 		//Obtem a recerência do objeto responsável por persistir os dados.

@@ -15,11 +15,11 @@ import tsi.too.samuelwagner.tipo.FormaPagamento;
 import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 
 /**A classe <code>ControleDespesa</code> implementa os métodos necessarios para utilizar as operações no <code>ArquivoDespesa</code>.
- * @author Samuel
- * @author Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  *
  */
-public class ControleDespesa implements Controle {
+public class ControleDespesa {
 	private ArquivoDespesa arquivoDespesa;
 	
 	/**

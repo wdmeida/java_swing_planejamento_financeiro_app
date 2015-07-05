@@ -10,13 +10,12 @@ import tsi.too.samuelwagner.gui.IgPlanejamentoFinanceiro;
  * 
  * @author Wagner Almeida
  * @author Samuel Gonçalves
- *
  */	
 public class PlanejamentoFinanceiroApp {
 	
 	/**
-	 * Método main, responsável por inicializar as funções do aplicativo de Planejamento Financeiro.
-	 * @param args @param args <code>String</code> argumentos.
+	 * Método main, responsável pela inicialização do aplicativo de Planejamento Financeiro.
+	 * @param args <code>String</code> argumentos.
 	 */
 	public static void main(String[] args) {
 		try {

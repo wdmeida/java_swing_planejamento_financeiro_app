@@ -7,8 +7,8 @@ import br.samuelwgner.arquivobinario.ArquivoBinario;
 
 /**
  * Define as funções responsáveis por salvar e recuperar um objeto <code>Renda</code> persistido em um arquivo no disco.
- * 
- * @author Samuel e Wagner
+ *  @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
 public class ArquivoRenda extends ArquivoBinario {
 

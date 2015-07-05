@@ -9,11 +9,11 @@ import tsi.too.samuelwagner.tipo.Renda;
 import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 
 /**A classe <code>ControleRenda</code> implementa os métodos necessarios para utilizar as operações no <code>ArquivoRenda</code>.
- * @author Samuel
- * @author Wagner
+ *  @author Samuel Gonçalves
+ * @author Wagner Almeida
  *
  */
-public class ControleRenda implements Controle{
+public class ControleRenda {
 	private ArquivoRenda arquivoRenda;
 	
 	/**

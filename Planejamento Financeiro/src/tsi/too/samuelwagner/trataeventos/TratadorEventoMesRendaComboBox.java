@@ -9,9 +9,9 @@ import javax.swing.table.DefaultTableModel;
 import tsi.too.samuelwagner.gui.IgPlanejamentoFinanceiro;
 import tsi.too.samuelwagner.operacoes.OperacoesDoIgPlanejamentoFinanceiro;
 
-/** Classe responsavel por tratar o evento referente ao ComboBox.
- * @author Samuel
- * @author Wagner
+/** Classe responsável por tratar o evento referente ao ComboBox da janela de renda mensal.
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
 public class TratadorEventoMesRendaComboBox implements ActionListener {
 	

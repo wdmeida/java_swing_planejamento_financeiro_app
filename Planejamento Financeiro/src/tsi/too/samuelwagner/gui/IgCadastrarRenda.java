@@ -2,6 +2,7 @@ package tsi.too.samuelwagner.gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -34,6 +35,8 @@ public class IgCadastrarRenda extends JDialog {
 	 * @param igPlanejamentoFinanceiro <code>IgPlanejamentoFinanceiro</code> referencia da Janela Principal.
 	 */
 	public IgCadastrarRenda(TituloJanela tituloJanela, IgPlanejamentoFinanceiro igPlanejamentoFinanceiro) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(IgCadastrarDespesas.class.getResource("/tsi/too/samuelwagner/imagens/money_bag.png")));
+		
 		//Define o titulo da Janela, o tamanho da Janela e o Layout utilizado na Janela.
 		setTitle(RotuloJanelaRendaERendaMensal.TITULO.getDescricao() + tituloJanela.getTitulo());
 		setBounds(100, 100, 307, 108);

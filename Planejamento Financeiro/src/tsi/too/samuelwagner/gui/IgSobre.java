@@ -3,6 +3,7 @@ package tsi.too.samuelwagner.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -25,6 +26,8 @@ public class IgSobre extends JDialog {
 	 * @param igPlanejamentoFinanceiro <code>IgPlanejamentoFinanceiro</code> com a referência da janela principal.
 	 */
 	public IgSobre(IgPlanejamentoFinanceiro igPlanejamentoFinanceiro) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(IgCadastrarDespesas.class.getResource("/tsi/too/samuelwagner/imagens/about.png")));
+
 		setTitle("Sobre");
 		setSize(460, 375);
 		setBackground(corPainel);

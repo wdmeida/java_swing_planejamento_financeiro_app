@@ -9,7 +9,8 @@ import tsi.too.samuelwagner.controle.ControleRenda;
 import tsi.too.samuelwagner.controle.ControleRendaMensal;
 
 /**
- * A classe <code>GerenciamentoDeFinanca</code> controla todas as operações do aplicativo Planejamento Financeiro.
+ * A classe <code>GerenciamentoDeFinanca</code> controla todas as instâncias de classes controladoras de acesso
+ * a disco do aplicativo Planejamento Financeiro, evitando desta forma que mais de uma instância seja utilizada.
  * @author Samuel Gonçalves
  * @author Wagner Almeida
  */

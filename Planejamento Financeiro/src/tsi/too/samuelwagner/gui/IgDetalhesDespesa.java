@@ -3,6 +3,7 @@ package tsi.too.samuelwagner.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -29,7 +30,7 @@ import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 /**
  * A classe <code>IgDetalhesDespesa</code> exibe a janela com todas as informações das despesas.
  * @author Wagner Almeida
- * @authos Samuel Gonçalves
+ * @author Samuel Gonçalves
  *
  */
 public class IgDetalhesDespesa extends JDialog {
@@ -46,6 +47,8 @@ public class IgDetalhesDespesa extends JDialog {
 	 * @param gerenciamentoDeFinanca <code>GerenciamentoDeFinanca</code> com a referência da classe que controla as operações.
 	 */
 	public IgDetalhesDespesa(IgPlanejamentoFinanceiro planejamentoFinanceiro, GerenciamentoDeFinanca gerenciamentoDeFinanca) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(IgCadastrarDespesas.class.getResource("/tsi/too/samuelwagner/imagens/shoping_cart.png")));
+		
 		setTitle("Despesas");
 		//Define as propriedades da janela.
 		setSize(968, 500);

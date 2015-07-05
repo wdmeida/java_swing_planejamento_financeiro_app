@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="public" author="true" classpath="miglayout15-swing.jar;jar/jcommon-1.0.23.jar;jar/jfreechart-1.0.19.jar;jar/ArquivoBinario.jar;jar/jcalendar-1.4.jar" destdir="doc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="tsi.too.samuelwagner.tipo,tsi.too.samuelwagner.app,tsi.too.samuelwagner.validacoes,tsi.too.samuelwagner.controle,tsi.too.samuelwagner.arquivo,tsi.too.samuelwagner.trataeventos,tsi.too.samuelwagner.enumeracoes,tsi.too.samuelwagner.gui,tsi.too.samuelwagner.operacoes" source="1.8" sourcepath="src" splitindex="true" use="true" version="true"/>
+    </target>
+</project>

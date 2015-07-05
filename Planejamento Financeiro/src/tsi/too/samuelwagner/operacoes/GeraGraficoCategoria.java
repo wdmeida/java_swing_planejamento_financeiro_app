@@ -18,7 +18,7 @@ import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 public class GeraGraficoCategoria {
 	
 	/**
-	 * Construtor Default da classe <code>GeraGraficoCategoria</code>
+	 * Construtor default da classe <code>GeraGraficoCategoria</code>
 	 */
 	public GeraGraficoCategoria() {}
 

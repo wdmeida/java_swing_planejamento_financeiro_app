@@ -16,7 +16,8 @@ import javax.swing.DefaultComboBoxModel;
 
 import tsi.too.samuelwagner.operacoes.GerenciamentoDeFinanca;
 /**
- * A classe <code>FuncaoAuxiliar</code>
+ * A classe <code>FuncaoAuxiliar</code> possui os métodos <code>static</code> que são utilizados por todas 
+ * as outras classes do aplicativo Planejamento Financeiro.
  * @author Samuel Gonçalves
  * @author Wagner Almeida
  */
@@ -26,7 +27,8 @@ public class FuncaoAuxiliar {
 	
 	/** Converte um <code>Calendar</code> para <code>String</code>.
 	 * @param data <code>Calendar</code>.
-	 * @param completa <code>boolean</code>.
+	 * @param completa <code>boolean</code> com os valores <code>true</code> caso queira a data completa ou <code>false</code> 
+	 * 					caso queira apenas mês e ano.
 	 * @return um <code>String</code> formatada.
 	 */
 	public static String coverteDataParaString(Calendar data, boolean completa) {
@@ -53,7 +55,7 @@ public class FuncaoAuxiliar {
 	}//obtemMesAno
 	
 	/**
-	 * Converte a uma data em <code>String</code> para <code>Calendar</code>.
+	 * Converte uma data em <code>String</code> para <code>Calendar</code>.
 	 * @param data <code>String</code> com a data a ser convertida.
 	 * @return um <code>Calendar</code> com a data ja convertida.
 	 */
@@ -88,7 +90,8 @@ public class FuncaoAuxiliar {
 	}//exibirMensagemErro
 	
 	/**
-	 * Compara duas String e verifica se são iguais. Caso seja retorna true. Ignora acentuações.
+	 * Compara duas String e verifica se são iguais. Caso seja retorna <code>true</code> se não retorna
+	 * <code>false</code>. Ignora acentuações.
 	 * @param textoA <code>String</code> a ser comparada.
 	 * @param textoB <code>String</code> a ser comparada.
 	 * @return um <code>true</code> caso sejam iguais ou um <code>false</code> caso sejam diferentes.
@@ -100,8 +103,7 @@ public class FuncaoAuxiliar {
 	}//comparaString()
 	
 	/**
-	 * Recebe o valor da meta do usuário e a porcentagem e retorna o valor em reais da porcentagem
-	 * relativa a meta.
+	 * Recebe o valor da meta do usuário e a porcentagem e retorna o valor em reais.
 	 * @param meta <code>double</code> com a meta de gastos do usuário.
 	 * @param porcentagem <code>int</code> com a porcentagem definida pelo usuário.
 	 * @return um <code>double</code> com o valor da meta.
@@ -138,11 +140,14 @@ public class FuncaoAuxiliar {
 		return periodos;
 	}//Meses Despesa
 	
-	/**Transforma uma valor Real que contem virgula para um valor Real com ponto.
+	/**Transforma uma valor real que contém virgula para um valor real com ponto.
 	 * @param valor <code>String</code> contedo o valor a ser transformado.
 	 * @return um <code>String</code> com o novo valor.
 	 */
 	public static String converteVirgulaEmPonto(String valor){
+		
+		if(valor.indexOf(".") == -1 && valor.indexOf(",") == -1) return valor;
+		
 		StringTokenizer tokens = new StringTokenizer(valor, ",.");
 		if(tokens.countTokens() >= 3) return "";
 		

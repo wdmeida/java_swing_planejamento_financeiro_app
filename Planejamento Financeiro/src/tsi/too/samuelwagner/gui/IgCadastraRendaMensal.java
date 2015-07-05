@@ -2,6 +2,7 @@ package tsi.too.samuelwagner.gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -47,6 +48,8 @@ public class IgCadastraRendaMensal extends JDialog {
 	 * @param igPlanejamentoFinanceiro <code>IgPlanejamentoFinanceiro</code> referencia da Janela Principal.
 	 */
 	public IgCadastraRendaMensal(TituloJanela tituloJanela, IgPlanejamentoFinanceiro igPlanejamentoFinanceiro) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(IgCadastrarDespesas.class.getResource("/tsi/too/samuelwagner/imagens/money393.png")));
+		
 		setTitle(RotuloJanelaRendaERendaMensal.TITULO.getDescricao() + tituloJanela.getTitulo());
 		setBounds(100, 100, 321, 413);
 		addWindowListener(new WindowAdapter() {

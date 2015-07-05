@@ -13,10 +13,10 @@ import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 
 /**A classe <code>ControlePlanejamentoMensal</code> implementa os métodos necessarios para utilizar as operações no <code>ArquivoPlanejamentoMensal</code>.
  * 
- * @author Samuel
- * @author Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  */
-public class ControlePlanejamentoMensal implements Controle{
+public class ControlePlanejamentoMensal{
 	private ArquivoPlanejamentoMensal arquivoPlanejamentoMensal;
 	
 	/**

@@ -2,16 +2,39 @@ package tsi.too.samuelwagner.enumeracoes;
 
 /**
  * Esta <code>Enum</code> possui os rótulos utilizados na interface de configuração da janela <code>IgCadastraRendaERendaMensal</code>.
- * @author Samuel
- * @author Wagner
+ * @author Samuel Gonçalves
+ * @author Wagner Almeida
  *
  */
 public enum RotuloJanelaRendaERendaMensal {
+	/**
+	 * Título da janela.
+	 */
 	TITULO("Cadastrar "),
+	
+	/**
+	 * Mensagem de campo não pode ser vazio.
+	 */
 	VAZIO_RENDA("Campo de descrição não pode ser vazio."),
+	
+	/**
+	 * Mensagem de renda mensal não pode ser vazia ou valor negativo.
+	 */
 	VAZIO_RENDA_MENSAL("Campo de valor não pode ser vazio ou ter valor negativo."),
+	
+	/**
+	 * Mensagem de renda já cadastrada.
+	 */
 	REPETIDO(" digitada já cadastrado no sistema."),
+	
+	/**
+	 * Mensagem de valor já salvo no sistema.
+	 */
 	SALVO(" cadastrada com sucesso."),
+	
+	/**
+	 * Mensagem de nova renda.
+	 */
 	NOVA_RENDA("Nova Renda...");
 	
 

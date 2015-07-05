@@ -1,5 +1,7 @@
 package tsi.too.samuelwagner.gui;
 
+import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -14,7 +16,12 @@ import javax.swing.border.TitledBorder;
 import tsi.too.samuelwagner.enumeracoes.TituloJanela;
 import tsi.too.samuelwagner.operacoes.GeraGraficoCategoria;
 import tsi.too.samuelwagner.operacoes.OperacoesDoIgPlanejamentoFinanceiro;
-
+/**
+ * A classe <code>IgGraficoBarra</code> é responsável por construir o gráfico de barras de exibição das despesas.
+ * @author Wagner Almeida.
+ * @author Samuel Gonçalves.
+ *
+ */
 public class IgGraficoBarra extends JDialog {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JPanel panelGraficoMetaMesal;
@@ -22,8 +29,17 @@ public class IgGraficoBarra extends JDialog {
 	private JComboBox<String> mesAnoComboBox;
 	private JRadioButton graficoValorRadio;
 	private JRadioButton graficoPorcentagemRadio;
+	private static Color corPainel = new Color(248, 248, 248);
 	
+	/**
+	 * Construtor da classe <code>IgGraficoBarra</code>. Constrói a interface gráfica para exibição do gráfico de 
+	 * barra de exibição das categorias.
+	 * @param igPlanejamentoFinanceiro <code>IgPlanejamentoFinanceiro</code> com a referência da janela principal.
+	 * @param tituloJanela <code>TituloJanela</code> com o título da janela.
+	 */
 	public IgGraficoBarra(IgPlanejamentoFinanceiro igPlanejamentoFinanceiro,TituloJanela tituloJanela) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(IgCadastrarDespesas.class.getResource("/tsi/too/samuelwagner/imagens/bars graphic4.png")));
+		getContentPane().setBackground(corPainel);
 		getContentPane().setLayout(null);
 		
 		panelGraficoMetaMesal = new JPanel();
@@ -35,6 +51,7 @@ public class IgGraficoBarra extends JDialog {
 		
 		
 		JPanel radioPanel = new JPanel();
+		radioPanel.setBackground(corPainel);
 		radioPanel.setBorder(new TitledBorder(null, "Escolha o Tipo de Gr\u00E1fico:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		radioPanel.setBounds(217, 11, 342, 53);
 		getContentPane().add(radioPanel);
@@ -53,6 +70,7 @@ public class IgGraficoBarra extends JDialog {
 		radioPanel.add(graficoPorcentagemRadio);
 		
 		JPanel comboBoxPanel = new JPanel();
+		comboBoxPanel.setBackground(corPainel);
 		comboBoxPanel.setBorder(new TitledBorder(null, "Escolha o M\u00EAs:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		comboBoxPanel.setBounds(10, 11, 197, 53);
 		getContentPane().add(comboBoxPanel);
@@ -94,6 +112,9 @@ public class IgGraficoBarra extends JDialog {
 		setVisible(true);
 	}
 	
+	/**
+	 * Atualiza o gráfico no painel.
+	 */
 	private void atualizaGrafico(){
 		boolean porcentagem;
 		if(graficoValorRadio.isSelected())

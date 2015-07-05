@@ -14,7 +14,7 @@ import tsi.too.samuelwagner.tipo.Despesa;
 import tsi.too.samuelwagner.tipo.RendaMensal;
 import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 
-/**Classe responsavel pela criação dos gráficos <code>Balanço Mensal</code> e <code>Balanço de Pagamento</code>.
+/**Classe responsável pela criação dos gráficos <code>Balanço Mensal</code> e <code>Balanço de Pagamento</code>.
  * @author Samuel Gonçalves
  * @author Wagner Almeida
  */

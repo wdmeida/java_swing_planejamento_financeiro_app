@@ -18,11 +18,11 @@ import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
 import tsi.too.samuelwagner.validacoes.Validador;
 
 /**A classe <code>ControleMetaMensal</code> implementa os métodos necessarios para utilizar as operações no <code>ArquivoMetaMensal</code>.
- * @author Samuel
- * @author Wagner
+ *  @author Samuel Gonçalves
+ * @author Wagner Almeida
  *
  */
-public class ControleMetaMensal implements Controle {
+public class ControleMetaMensal {
 	private ArquivoMetaMensal arquivoMetaMensal;
 	private static IgCadastrarMetaMensal igCadastrarMetaMensal; 
 	
