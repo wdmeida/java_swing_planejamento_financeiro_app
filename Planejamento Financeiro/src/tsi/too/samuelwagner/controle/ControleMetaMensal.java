@@ -150,7 +150,7 @@ public class ControleMetaMensal implements Controle {
 		int indice = categoria.pesquisaCategoria(nomeCategoria);
 	
 		Categoria auxiliar = categoria.obtemCategoria(indice);
-		if(!Validador.validaNumeroReal(valor)){
+		if(!Validador.validaNumeroReal(FuncaoAuxiliar.converteVirgulaEmPonto(valor))){
 			showMessageDialog(igCadastrarMetaMensal,RotuloJanelaMetaMensal.VAZIO_INVALIDO.getDescricao(),RotuloJanelaMetaMensal.TITULO.getDescricao(),ERROR_MESSAGE);
 			return false;
 		}else{
@@ -168,7 +168,7 @@ public class ControleMetaMensal implements Controle {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			gravarMetaMensal(auxiliar.getCodigo(), mesAno, Double.parseDouble(valor),porcentagem);
+			gravarMetaMensal(auxiliar.getCodigo(), mesAno, Double.parseDouble(FuncaoAuxiliar.converteVirgulaEmPonto(valor)),porcentagem);
 			showMessageDialog(igCadastrarMetaMensal, RotuloJanelaMetaMensal.SALVO.getDescricao(), RotuloJanelaMetaMensal.TITULO.getDescricao(), INFORMATION_MESSAGE);
 			return true;
 		}

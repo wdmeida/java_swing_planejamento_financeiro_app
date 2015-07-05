@@ -83,7 +83,7 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 		if(validarDatas(cadastrarDespesas.getDataPagamentoDateChooser())) despesa.setDataPagamento(cadastrarDespesas.getDataPagamentoDateChooser().getCalendar());
 		else invalido = true;
 		
-		if(validarValor()) despesa.setValorDespesa(Double.parseDouble(cadastrarDespesas.getValorTextField().getText()));
+		if(validarValor()) despesa.setValorDespesa(Double.parseDouble(FuncaoAuxiliar.converteVirgulaEmPonto(cadastrarDespesas.getValorTextField().getText())));
 		else invalido = true;
 		
 		if(validarCategoria()) nomeCategoria = cadastrarDespesas.getCategoriaComboBox().getItemAt(cadastrarDespesas.getCategoriaComboBox().getSelectedIndex());
@@ -228,7 +228,7 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 	 * @return <code>boolean</code> informando <code>true</code> se verdadeiro ou <code>false</code> se falso.
 	 */
 	private boolean validarValor() {
-		if(!Validador.validaNumeroReal(cadastrarDespesas.getValorTextField().getText())){
+		if(!Validador.validaNumeroReal(FuncaoAuxiliar.converteVirgulaEmPonto(cadastrarDespesas.getValorTextField().getText()))){
 			cadastrarDespesas.getValorTextField().setBorder(new LineBorder(Color.RED));
 			ativarMensagemPreenchimento(true);
 			return false;

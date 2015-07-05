@@ -135,4 +135,19 @@ public class FuncaoAuxiliar {
 		DefaultComboBoxModel<String> periodos = new DefaultComboBoxModel<String>(meses);
 		return periodos;
 	}//Meses Despesa
+	
+	/**Transforma uma valor Real que contem virgula para um valor Real com ponto.
+	 * @param valor <code>String</code> contedo o valor a ser transformado.
+	 * @return um <code>String</code> com o novo valor.
+	 */
+	public static String converteVirgulaEmPonto(String valor){
+		StringTokenizer tokens = new StringTokenizer(valor, ",.");
+		if(tokens.countTokens() >= 3) return "";
+		
+		String novoValor = tokens.nextToken() + "." + tokens.nextToken();
+		while(tokens.hasMoreTokens())
+			novoValor += tokens.nextToken();
+		
+		return novoValor;
+	}
 }//class FuncaoAuxiliar

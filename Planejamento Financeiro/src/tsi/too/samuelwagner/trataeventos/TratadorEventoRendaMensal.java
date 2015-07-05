@@ -57,12 +57,12 @@ public class TratadorEventoRendaMensal implements ActionListener{
 	 */
 	private void cadastraRendaMensal() {
 		
-		if(Validador.validaNumeroReal(igCadastraRendaMensal.getAreaValorField().getText())){
+		if(Validador.validaNumeroReal(FuncaoAuxiliar.converteVirgulaEmPonto(igCadastraRendaMensal.getAreaValorField().getText()))){
 			GerenciamentoDeFinanca.getGerenciamentoFincanca().getControleRendaMensal().gravarRendaMensal(
 					igCadastraRendaMensal.getTipoRendaBox().getItemAt(igCadastraRendaMensal.getTipoRendaBox().getSelectedIndex()),
 					obtemCodigoRendaEscolhida(igCadastraRendaMensal.getTipoRendaBox().getSelectedIndex()),
 					igCadastraRendaMensal.getjCalendar().getCalendar(), 
-					Double.parseDouble(igCadastraRendaMensal.getAreaValorField().getText()));
+					Double.parseDouble(FuncaoAuxiliar.converteVirgulaEmPonto(igCadastraRendaMensal.getAreaValorField().getText())));
 			FuncaoAuxiliar.exibirMensagem(igCadastraRendaMensal,tituloJanela.getTitulo() + RotuloJanelaRendaERendaMensal.SALVO.getDescricao(), tituloJanela.getTitulo());
 			OperacoesDoIgPlanejamentoFinanceiro.atualizaTabelaRenda(igPlanejamentoFinanceiro);
 			igCadastraRendaMensal.dispose();
