@@ -1,21 +1,20 @@
 package tsi.too.samuelwagner.gui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import net.miginfocom.swing.MigLayout;
 import tsi.too.samuelwagner.enumeracoes.RotuloJanelaRendaERendaMensal;
 import tsi.too.samuelwagner.enumeracoes.TituloJanela;
 import tsi.too.samuelwagner.trataeventos.TratadorEventoRenda;
-import java.awt.Font;
-import javax.swing.ImageIcon;
 
 /**A classe <code>IgCadastrarRenda</code> é responsável por construir a janela para adição de novas
  * rendas.

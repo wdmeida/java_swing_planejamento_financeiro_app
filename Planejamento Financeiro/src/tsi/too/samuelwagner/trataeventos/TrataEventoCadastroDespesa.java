@@ -86,11 +86,9 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 		if(validarValor()) despesa.setValorDespesa(Double.parseDouble(FuncaoAuxiliar.converteVirgulaEmPonto(cadastrarDespesas.getValorTextField().getText())));
 		else invalido = true;
 		
-		if(validarCategoria()) nomeCategoria = cadastrarDespesas.getCategoriaComboBox().getItemAt(cadastrarDespesas.getCategoriaComboBox().getSelectedIndex());
-		else invalido = true;
-		
-		if(validarFormaDePagamento()) formaPagamento = cadastrarDespesas.getFormaPagamentoComboBox().getItemAt(cadastrarDespesas.getFormaPagamentoComboBox().getSelectedIndex());
-		else invalido = true;
+		//Obtém o nome da categoria e a forma de pagamento.
+		nomeCategoria = cadastrarDespesas.getCategoriaComboBox().getItemAt(cadastrarDespesas.getCategoriaComboBox().getSelectedIndex());
+		formaPagamento = cadastrarDespesas.getFormaPagamentoComboBox().getItemAt(cadastrarDespesas.getFormaPagamentoComboBox().getSelectedIndex());
 		
 		//Verifica se o tipo de pagamento é cheque.
 		if(cadastrarDespesas.getFormaPagamentoComboBox().getItemAt(cadastrarDespesas.getFormaPagamentoComboBox().getSelectedIndex()).equalsIgnoreCase(TipoPagamento.CHEQUE.getTipoPagamento()))
@@ -110,9 +108,13 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 		else
 			despesa.setNumeroParcelas(1);
 		
-		if(invalido)
+		if(invalido){
+			ativarMensagemPreenchimento(true);
 			FuncaoAuxiliar.exibirMensagemErro(cadastrarDespesas, RotuloJanelaDespesa.MSG_DADOS_INVALIDOS.getDescricao(), RotuloJanelaDespesa.TITULO.getDescricao());
-		else{
+		}else{
+			ativarMensagemPreenchimento(false);
+			//Calcula o valor da parcela.
+			if(despesa.getNumeroParcelas() > 1) despesa.setValorDespesa(despesa.getValorDespesa() / despesa.getNumeroParcelas());
 			FuncaoAuxiliar.exibirMensagem(cadastrarDespesas, RotuloJanelaDespesa.MSG_DADOS_CORRETOS.getDescricao(), RotuloJanelaDespesa.TITULO.getDescricao());
 			GerenciamentoDeFinanca.getGerenciamentoFincanca().getControleDespesa().cadastrarDespesa(despesa, formaPagamento, nomeCategoria);
 			OperacoesDoIgPlanejamentoFinanceiro.atualizaTabelaDespesa(igPlanejamentoFinanceiro);
@@ -122,21 +124,32 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 	}//cadastrarDespesa()
 	
 	/**
-	 * Valida o valor dos campos da parcela.
+	 * Valida o valor do campo parcela.
 	 * @return <code>boolean</code> informando <code>true</code> se verdadeiro ou <code>false</code> se falso.
 	 */
 	private boolean validarParcelas() {
 		if(!Validador.validaNumeroInteiro(cadastrarDespesas.getQuantidadeParcelasTextField().getText())){
 			cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.RED));
 			return false;
-		}else
-		{
-			if(Integer.parseInt(cadastrarDespesas.getQuantidadeParcelasTextField().getText()) > 1){
-				cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.GRAY));
-				return true;
+		}else{
+			//Obtém a forma de pagamento e a quantidade de parcelas.
+			String formaPagamento = cadastrarDespesas.getFormaPagamentoComboBox().getItemAt(cadastrarDespesas.getFormaPagamentoComboBox().getSelectedIndex());
+			int parcelas = Integer.parseInt(cadastrarDespesas.getQuantidadeParcelasTextField().getText());
+			boolean maisParcelas = false;
+			
+			//Verifica se a forma de pagamento é cheque ou cartão.
+			if(formaPagamento.equalsIgnoreCase(TipoPagamento.CARTAO.getTipoPagamento())) maisParcelas = true;
+			
+			if(formaPagamento.equalsIgnoreCase(TipoPagamento.CHEQUE.getTipoPagamento())) maisParcelas = true;
+			
+			if(maisParcelas){
+				if(parcelas >= 1) return true;
+				else {
+					cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.RED));
+					return false;
+				}
 			}
-			else
-				return false;
+			return true;
 		}
 	}//validarParcelas()
 	
@@ -197,12 +210,10 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 	private boolean validarDescricao(){
 		if(Validador.validaCampoVazio(cadastrarDespesas.getDescricaoTextField().getText())){
 			cadastrarDespesas.getDescricaoTextField().setBorder(new LineBorder(Color.RED));
-			ativarMensagemPreenchimento(true);
 			return false;
 		}			
 		else{
 			cadastrarDespesas.getDescricaoTextField().setBorder(new LineBorder(Color.GRAY));
-			ativarMensagemPreenchimento(false);
 			return true;
 		}
 	}//validarDescricao
@@ -230,49 +241,13 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 	private boolean validarValor() {
 		if(!Validador.validaNumeroReal(FuncaoAuxiliar.converteVirgulaEmPonto(cadastrarDespesas.getValorTextField().getText()))){
 			cadastrarDespesas.getValorTextField().setBorder(new LineBorder(Color.RED));
-			ativarMensagemPreenchimento(true);
 			return false;
 		}			
 		else{
 			cadastrarDespesas.getValorTextField().setBorder(new LineBorder(Color.GRAY));
-			ativarMensagemPreenchimento(false);
 			return true;
 		}
 	}//validarValor
-	
-	/**
-	 * Valida o valor forma de pagamento. Muda a borda para vermelha se for um valor inválido e deixa cinza e volta pra cinza caso seja.
-	 * @return <code>boolean</code> informando <code>true</code> se verdadeiro ou <code>false</code> se falso.
-	 */
-	private boolean validarFormaDePagamento(){
-		if(cadastrarDespesas.getFormaPagamentoComboBox().getSelectedIndex() == -1){
-			cadastrarDespesas.getFormaPagamentoComboBox().setBorder(new LineBorder(Color.RED));
-			ativarMensagemPreenchimento(true);
-			return false;
-		}			
-		else{
-			cadastrarDespesas.getFormaPagamentoComboBox().setBorder(new LineBorder(Color.GRAY));
-			ativarMensagemPreenchimento(false);
-			return true;
-		}
-	}//validarFormaDePagamento()
-	
-	/**
-	 * Valida a categoria. Muda a borda para vermelha se for um valor inválido e deixa cinza e volta pra cinza caso seja.
-	 * @return <code>boolean</code> informando <code>true</code> se verdadeiro ou <code>false</code> se falso.
-	 */
-	private boolean validarCategoria(){
-		if(cadastrarDespesas.getCategoriaComboBox().getSelectedIndex() == -1){
-			cadastrarDespesas.getCategoriaComboBox().setBorder(new LineBorder(Color.RED));
-			ativarMensagemPreenchimento(true);
-			return false;
-		}			
-		else{
-			cadastrarDespesas.getCategoriaComboBox().setBorder(new LineBorder(Color.GRAY));
-			ativarMensagemPreenchimento(false);
-			return true;
-		}
-	}//validarCategoria()
 	
 	/**
 	 * Valida as datas. Muda a borda para vermelha se for um valor inválido e deixa cinza e volta pra cinza caso seja.
@@ -282,11 +257,9 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 	private boolean validarDatas(JDateChooser data) {
 		if(data.getCalendar() == null){
 			data.setBorder(new LineBorder(Color.RED));
-			ativarMensagemPreenchimento(true);
 			return false;
 		}else{
 			data.setBorder(new LineBorder(Color.GRAY));
-			ativarMensagemPreenchimento(false);
 			return true;
 		}
 	}//validarDatas
