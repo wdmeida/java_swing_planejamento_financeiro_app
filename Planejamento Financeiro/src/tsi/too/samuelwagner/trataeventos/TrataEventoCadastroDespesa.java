@@ -3,6 +3,7 @@ package tsi.too.samuelwagner.trataeventos;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.peer.SystemTrayPeer;
 import java.util.Calendar;
 
 import javax.swing.border.LineBorder;
@@ -11,7 +12,6 @@ import tsi.too.samuelwagner.enumeracoes.RotuloJanelaDespesa;
 import tsi.too.samuelwagner.enumeracoes.TipoPagamento;
 import tsi.too.samuelwagner.gui.IgCadastrarCategoria;
 import tsi.too.samuelwagner.gui.IgCadastrarDespesas;
-import tsi.too.samuelwagner.gui.IgCadastrarFormaPagamento;
 import tsi.too.samuelwagner.gui.IgPlanejamentoFinanceiro;
 import tsi.too.samuelwagner.operacoes.GerenciamentoDeFinanca;
 import tsi.too.samuelwagner.operacoes.OperacoesDoIgPlanejamentoFinanceiro;
@@ -100,9 +100,16 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 		
 		//Verifica se o tipo de pagamento é à vista.
 		if(!formaPagamento.equalsIgnoreCase(TipoPagamento.A_VISTA.getTipoPagamento()))
-		{
-			if(validarParcelas()) despesa.setNumeroParcelas(Integer.parseInt(cadastrarDespesas.getQuantidadeParcelasTextField().getText()));
-			else invalido = true;	
+		{	
+			//Verifica se a borda é vádida.
+			if(validarParcelas()){
+				despesa.setNumeroParcelas(Integer.parseInt(cadastrarDespesas.getQuantidadeParcelasTextField().getText()));
+				cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.GRAY));
+			}
+			else {
+				cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.RED));
+				invalido = true;	
+			}
 		}
 		else
 			despesa.setNumeroParcelas(1);
@@ -130,20 +137,11 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 	 */
 	private boolean validarParcelas() {
 		//Verifica se não é um número falso.
-		if(!Validador.validaNumeroInteiro(cadastrarDespesas.getQuantidadeParcelasTextField().getText())){
-			cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.RED));
-			return false;
-		}else{
+		if(!Validador.validaNumeroInteiro(cadastrarDespesas.getQuantidadeParcelasTextField().getText())) return false;
+		else
 			if(validaQuantidadeParcelas(Integer.parseInt(cadastrarDespesas.getQuantidadeParcelasTextField().getText())))
-			{
-				cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.GRAY));
 				return true;
-			}
-			else{
-				cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.RED));
-				return false;
-			}
-		}
+			else return false;
 	}//validarParcelas()
 	
 	/**
@@ -158,9 +156,7 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 		//Verifica se o pagamento é diferente de cheque ou cartão.
 		if(!pagamento.equalsIgnoreCase(TipoPagamento.CHEQUE.getTipoPagamento()) && !pagamento.equalsIgnoreCase(TipoPagamento.CARTAO.getTipoPagamento())){
 			if(parcelas > 1) return true;
-			else { 				
-				cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.RED));
-				return false;}
+			else return false;
 		}
 		else return true;
 	}//validaQuantidadeParcelas()
@@ -169,7 +165,12 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 	 * Método responsável por ativar e desativar os campos da janela dependendo da forma de pagamento utilizada.
 	 */
 	private void eventosFormaPagamento(){
-
+		//Obtém a forma de pagamento.
+		String pagamento = cadastrarDespesas.getFormaPagamentoComboBox().getItemAt(cadastrarDespesas.getFormaPagamentoComboBox().getSelectedIndex());
+		System.out.println("eee");
+		
+		if(pagamento.equalsIgnoreCase(TipoPagamento.CARTAO.getTipoPagamento()))
+			System.out.println("caca");
 	}//cadastrarFormaPagamento
 	
 	/**

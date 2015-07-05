@@ -148,15 +148,19 @@ public class TratadorEventoCadastroDespesa implements ActionListener {
 			if(Integer.parseInt(cadastrarDespesas.getQuantidadeParcelasTextField().getText()) >= 1){
 				cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.GRAY));
 				return true;
-			}else
+			}else{
+				cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.RED));
 				return false;
+			}
 		else{
 			//Caso não seja.
 			if(Integer.parseInt(cadastrarDespesas.getQuantidadeParcelasTextField().getText()) > 1){
 				cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.GRAY));
 				return true;
-			}else
+			}else{
+				cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.RED));
 				return false;
+			}
 		}
 	}//validarParcelas()
 	
