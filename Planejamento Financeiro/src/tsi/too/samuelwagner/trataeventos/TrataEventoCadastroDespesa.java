@@ -70,28 +70,27 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 		//Valida as entradas do usuário
 		boolean invalido = false;
 		Despesa despesa = new Despesa();
-		String nomeCategoria = "", formaPagamento = "";
 		
-		cadastrarDespesas.getQuantidadeParcelasTextField().setEnabled(true);
-		
+		//Valida a descrição
 		if(validarDescricao()) despesa.setDescricao(cadastrarDespesas.getDescricaoTextField().getText());
 		else invalido = true;
 		
+		//Valida as datas.
 		if(validarDatas(cadastrarDespesas.getDataDespesaDateChooser())) despesa.setDataDespesa(cadastrarDespesas.getDataDespesaDateChooser().getCalendar());
 		else invalido = true;
-		
 		if(validarDatas(cadastrarDespesas.getDataPagamentoDateChooser())) despesa.setDataPagamento(cadastrarDespesas.getDataPagamentoDateChooser().getCalendar());
 		else invalido = true;
 		
+		//Valida o valor.
 		if(validarValor()) despesa.setValorDespesa(Double.parseDouble(FuncaoAuxiliar.converteVirgulaEmPonto(cadastrarDespesas.getValorTextField().getText())));
 		else invalido = true;
 		
 		//Obtém o nome da categoria e a forma de pagamento.
-		nomeCategoria = cadastrarDespesas.getCategoriaComboBox().getItemAt(cadastrarDespesas.getCategoriaComboBox().getSelectedIndex());
-		formaPagamento = cadastrarDespesas.getFormaPagamentoComboBox().getItemAt(cadastrarDespesas.getFormaPagamentoComboBox().getSelectedIndex());
+		String nomeCategoria = cadastrarDespesas.getCategoriaComboBox().getItemAt(cadastrarDespesas.getCategoriaComboBox().getSelectedIndex());
+		String formaPagamento = cadastrarDespesas.getFormaPagamentoComboBox().getItemAt(cadastrarDespesas.getFormaPagamentoComboBox().getSelectedIndex());
 		
 		//Verifica se o tipo de pagamento é cheque.
-		if(cadastrarDespesas.getFormaPagamentoComboBox().getItemAt(cadastrarDespesas.getFormaPagamentoComboBox().getSelectedIndex()).equalsIgnoreCase(TipoPagamento.CHEQUE.getTipoPagamento()))
+		if(formaPagamento.equalsIgnoreCase(TipoPagamento.CHEQUE.getTipoPagamento()))
 		{
 			if(validarCheque()) despesa.setNumeroCheque(cadastrarDespesas.getNumeroChequeTextField().getText());
 			else invalido = true;	
@@ -99,8 +98,8 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 		else
 			despesa.setNumeroCheque("");
 		
-		//Verifica se o tipo de pagamento é cheque.
-		if(!cadastrarDespesas.getFormaPagamentoComboBox().getItemAt(cadastrarDespesas.getFormaPagamentoComboBox().getSelectedIndex()).equalsIgnoreCase(TipoPagamento.A_VISTA.getTipoPagamento()))
+		//Verifica se o tipo de pagamento é à vista.
+		if(!formaPagamento.equalsIgnoreCase(TipoPagamento.A_VISTA.getTipoPagamento()))
 		{
 			if(validarParcelas()) despesa.setNumeroParcelas(Integer.parseInt(cadastrarDespesas.getQuantidadeParcelasTextField().getText()));
 			else invalido = true;	
@@ -116,6 +115,8 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 			//Calcula o valor da parcela.
 			if(despesa.getNumeroParcelas() > 1) despesa.setValorDespesa(despesa.getValorDespesa() / despesa.getNumeroParcelas());
 			FuncaoAuxiliar.exibirMensagem(cadastrarDespesas, RotuloJanelaDespesa.MSG_DADOS_CORRETOS.getDescricao(), RotuloJanelaDespesa.TITULO.getDescricao());
+			
+			//Cadastra a despesa, atualiza a tabela e verifica se o orçamento foi estourado.
 			GerenciamentoDeFinanca.getGerenciamentoFincanca().getControleDespesa().cadastrarDespesa(despesa, formaPagamento, nomeCategoria);
 			OperacoesDoIgPlanejamentoFinanceiro.atualizaTabelaDespesa(igPlanejamentoFinanceiro);
 			verificaSituacaoCategoria(nomeCategoria, cadastrarDespesas.getDataDespesaDateChooser().getCalendar());
@@ -128,69 +129,66 @@ public class TrataEventoCadastroDespesa implements ActionListener {
 	 * @return <code>boolean</code> informando <code>true</code> se verdadeiro ou <code>false</code> se falso.
 	 */
 	private boolean validarParcelas() {
+		//Verifica se não é um número falso.
 		if(!Validador.validaNumeroInteiro(cadastrarDespesas.getQuantidadeParcelasTextField().getText())){
 			cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.RED));
 			return false;
 		}else{
-			//Obtém a forma de pagamento e a quantidade de parcelas.
-			String formaPagamento = cadastrarDespesas.getFormaPagamentoComboBox().getItemAt(cadastrarDespesas.getFormaPagamentoComboBox().getSelectedIndex());
-			int parcelas = Integer.parseInt(cadastrarDespesas.getQuantidadeParcelasTextField().getText());
-			boolean maisParcelas = false;
-			
-			//Verifica se a forma de pagamento é cheque ou cartão.
-			if(formaPagamento.equalsIgnoreCase(TipoPagamento.CARTAO.getTipoPagamento())) maisParcelas = true;
-			
-			if(formaPagamento.equalsIgnoreCase(TipoPagamento.CHEQUE.getTipoPagamento())) maisParcelas = true;
-			
-			if(maisParcelas){
-				if(parcelas >= 1) return true;
-				else {
-					cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.RED));
-					return false;
-				}
+			if(validaQuantidadeParcelas(Integer.parseInt(cadastrarDespesas.getQuantidadeParcelasTextField().getText())))
+			{
+				cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.GRAY));
+				return true;
 			}
-			return true;
+			else{
+				cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.RED));
+				return false;
+			}
 		}
 	}//validarParcelas()
+	
+	/**
+	 * Valida a quantidade de parcelas referente ao pagamento do item.
+	 * @param parcelas <code>int</code> com a quantidade de parcelas.
+	 * @return <code>boolean</code> informando <code>true</code> se verdadeiro ou <code>false</code> se falso.
+	 */
+	private boolean validaQuantidadeParcelas(int parcelas){
+		//Obtém a forma de pagamento.
+		String pagamento = cadastrarDespesas.getFormaPagamentoComboBox().getItemAt(cadastrarDespesas.getFormaPagamentoComboBox().getSelectedIndex());
+		
+		//Verifica se o pagamento é diferente de cheque ou cartão.
+		if(!pagamento.equalsIgnoreCase(TipoPagamento.CHEQUE.getTipoPagamento()) && !pagamento.equalsIgnoreCase(TipoPagamento.CARTAO.getTipoPagamento())){
+			if(parcelas > 1) return true;
+			else { 				
+				cadastrarDespesas.getQuantidadeParcelasTextField().setBorder(new LineBorder(Color.RED));
+				return false;}
+		}
+		else return true;
+	}//validaQuantidadeParcelas()
 	
 	/**
 	 * Método responsável por ativar e desativar os campos da janela dependendo da forma de pagamento utilizada.
 	 */
 	private void eventosFormaPagamento(){
-		
-		//Verifica se a opção selecionada foi cadastrar uma nova categoria.
-		if(cadastrarDespesas.getFormaPagamentoComboBox().getItemAt(cadastrarDespesas.getFormaPagamentoComboBox().getSelectedIndex()).equalsIgnoreCase(RotuloJanelaDespesa.NOVA_FORMA_PAGAMENTO.getDescricao())){
-			new IgCadastrarFormaPagamento(cadastrarDespesas);
-			cadastrarDespesas.carregarFormasPagamento();
-		}else
-		//Verifica se a opção cheque está marcada, caso esteja ativa o campo de inserção de dados.
-		if(FuncaoAuxiliar.comparaString(cadastrarDespesas.getFormaPagamentoComboBox().getItemAt(cadastrarDespesas.getFormaPagamentoComboBox().getSelectedIndex()),TipoPagamento.CHEQUE.getTipoPagamento())){
-			ativarCamposPagamentoCheque(true);
-		}else{
-			cadastrarDespesas.getNumeroChequeTextField().setEnabled(false);
-			//Verifica se a opção é diferente de à vista, caso não seja ativa a barra de inserção de dados.
-			if(FuncaoAuxiliar.comparaString(cadastrarDespesas.getFormaPagamentoComboBox().getItemAt(cadastrarDespesas.getFormaPagamentoComboBox().getSelectedIndex()),TipoPagamento.A_VISTA.getTipoPagamento())){
-				cadastrarDespesas.getQuantidadeParcelasTextField().setEnabled(false);
-			}else
-				cadastrarDespesas.getQuantidadeParcelasTextField().setEditable(true);
-		}	
-		
+
 	}//cadastrarFormaPagamento
 	
 	/**
-	 * Ativa os campos para pagamento via cheque.
+	 * Ativa s campo para aceitar pagamento via cheque.
 	 * @param ativar <code>boolean</code> com os valores <code>true</code> para ativar ou <code>false</code> para desativar.
 	 */
-	private void ativarCamposPagamentoCheque(boolean ativar){
-		if(ativar){
-			cadastrarDespesas.getNumeroChequeTextField().setEnabled(true);
-			cadastrarDespesas.getQuantidadeParcelasTextField().setEnabled(true);
-		}
-		else{
-			cadastrarDespesas.getNumeroChequeTextField().setEditable(false);
-			cadastrarDespesas.getQuantidadeParcelasTextField().setEnabled(false);
-		}	
+	private void ativarCampoPagamentoCheque(boolean ativar){
+		if(ativar) cadastrarDespesas.getNumeroChequeTextField().setEnabled(true);
+		else cadastrarDespesas.getNumeroChequeTextField().setEditable(false);
 	}//ativarCamposPagementoCheque
+	
+	/**
+	 * Ativa o campo para pagamento parcelado.
+	 * @param ativar ativar <code>boolean</code> com os valores <code>true</code> para ativar ou <code>false</code> para desativar.
+	 */
+	private void ativarCampoNumeroParcelas(boolean ativar){
+		if(ativar) cadastrarDespesas.getQuantidadeParcelasTextField().setEnabled(true);
+		else cadastrarDespesas.getQuantidadeParcelasTextField().setEnabled(false);	
+	}
 	
 	/**
 	 * Verifica se o usuário quer cadastrar uma nova categoria. Caso queira, abre a caixa de cadastro.
