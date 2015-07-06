@@ -235,17 +235,33 @@ public class IgPlanejamentoFinanceiro extends JFrame {
 		barraMenu.add(ajudaMenuItem);
 		
 		//Cria um item de menu e adiciona ao menu ajuda.
+		JMenuItem ajudaMenu = new JMenuItem("Ajuda");
+		ajudaMenu.setMnemonic(KeyEvent.VK_A);
+		ajudaMenu.setIcon(new ImageIcon(IgPlanejamentoFinanceiro.class.getResource("/tsi/too/samuelwagner/imagens/online_support.png")));
+		ajudaMenu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.CTRL_MASK));
+		ajudaMenuItem.add(ajudaMenu);
+		
+		//Registra o tratador de eventos do menu sobre.
+		ajudaMenu.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new IgAjuda(IgPlanejamentoFinanceiro.this);
+			}
+		});
+		
+		//Cria um item de menu e adiciona ao menu ajuda.
 		JMenuItem sobreMenuItem = new JMenuItem("Sobre");
 		sobreMenuItem.setMnemonic(KeyEvent.VK_S);
 		sobreMenuItem.setIcon(new ImageIcon(IgPlanejamentoFinanceiro.class.getResource("/tsi/too/samuelwagner/imagens/about.png")));
 		sobreMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
 		ajudaMenuItem.add(sobreMenuItem);
 		
-		//Registra o tratador de eventos do menu sobre.
 		sobreMenuItem.addActionListener(new ActionListener() {
+			
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				new IgSobre(IgPlanejamentoFinanceiro.this);
+				
 			}
 		});
 		
@@ -363,10 +379,20 @@ public class IgPlanejamentoFinanceiro extends JFrame {
 		panel.add(lblCadastroDeRendas);
 		
 		//Cria o rótulo de visualização de balancos
-		JLabel visualizarBalancoLabel = new JLabel("Visualiza balanços financeiros");
+		JLabel visualizarBalancoLabel = new JLabel("Visualiza balanços financeiros;");
 		visualizarBalancoLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		visualizarBalancoLabel.setBounds(20, 187, 182, 14);
 		panel.add(visualizarBalancoLabel);
+		
+		JLabel lblComeceASeu = new JLabel("Visualiza os balanços através de gráficos;");
+		lblComeceASeu.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblComeceASeu.setBounds(20, 212, 239, 14);
+		panel.add(lblComeceASeu);
+		
+		JLabel lblSalvaOsGrfico = new JLabel("Salva os gráfico para balanços futuros.");
+		lblSalvaOsGrfico.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblSalvaOsGrfico.setBounds(20, 237, 220, 14);
+		panel.add(lblSalvaOsGrfico);
 		
 		//Cria o painel de visualização.
 		JPanel visualizarPanel = new JPanel();
