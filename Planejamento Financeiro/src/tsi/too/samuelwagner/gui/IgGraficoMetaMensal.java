@@ -47,9 +47,6 @@ public class IgGraficoMetaMensal extends JDialog {
 	public IgGraficoMetaMensal(IgPlanejamentoFinanceiro igPlanejamentoFinanceiro,TituloJanela tituloJanela) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(IgCadastrarDespesas.class.getResource("/tsi/too/samuelwagner/imagens/stats62.png")));
 
-		setBounds(100, 100, 951, 511);
-		
-		setResizable(false);
 		getContentPane().setLayout(null);
 		getContentPane().setBackground(corPainel);
 		panelGraficoMetaMesal = new JPanel();
@@ -159,6 +156,10 @@ public class IgGraficoMetaMensal extends JDialog {
 			}
 		});
 		
+
+		setBounds(100, 100, 951, 511);
+		setBackground(corPainel);
+		setResizable(false);
 		setModal(true);
 		setLocationRelativeTo(igPlanejamentoFinanceiro);
 		setVisible(true);

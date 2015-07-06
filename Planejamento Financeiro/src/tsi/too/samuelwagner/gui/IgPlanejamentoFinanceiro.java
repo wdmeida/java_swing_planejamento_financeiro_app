@@ -472,6 +472,27 @@ public class IgPlanejamentoFinanceiro extends JFrame {
 		abaTabbedPane.setMnemonicAt(2, KeyEvent.VK_T);
 		abaTabbedPane.setMnemonicAt(3, KeyEvent.VK_P);
 		abaTabbedPane.setMnemonicAt(4, KeyEvent.VK_B);
+		
+		setBackground(corPainel);
+		getContentPane().setBackground(corPainel);
+		abaTabbedPane.setBackground(corPainel);
+		barraMenu.setBackground(corPainel);
+		arquivoMenu.setBackground(corPainel);
+		ajudaMenuItem.setBackground(corPainel);
+		menuNavegar.setBackground(corPainel);
+		menuCadastrar.setBackground(corPainel);
+		menuVisualizar.setBackground(corPainel);
+		sairMenuItem.setBackground(corPainel);
+		sobreMenuItem.setBackground(corPainel);
+		despesasMenuItem.setBackground(corPainel);
+		rendasMenuItem.setBackground(corPainel);
+		metasMenuItem.setBackground(corPainel);
+		balancoCategoriasMenu.setBackground(corPainel);
+		balancoMensalMenuItem.setBackground(corPainel);
+		balancoPagamentoMenuItem.setBackground(corPainel);
+		balancoPagamentosButton.setBackground(corPainel);
+		despesasCadastradasMenuItem.setBackground(corPainel);
+		ajudaMenu.setBackground(corPainel);
 		//Define a janela como visível.
 		setVisible(true);
 	}//IgPlanejamentoFinanceiro()
