@@ -490,7 +490,6 @@ public class IgPlanejamentoFinanceiro extends JFrame {
 		balancoCategoriasMenu.setBackground(corPainel);
 		balancoMensalMenuItem.setBackground(corPainel);
 		balancoPagamentoMenuItem.setBackground(corPainel);
-		balancoPagamentosButton.setBackground(corPainel);
 		despesasCadastradasMenuItem.setBackground(corPainel);
 		ajudaMenu.setBackground(corPainel);
 		//Define a janela como visível.
@@ -981,7 +980,7 @@ public class IgPlanejamentoFinanceiro extends JFrame {
 		balancoMensalButton.setMnemonic(KeyEvent.VK_M);
 		graficoBotoesPanel.add(balancoMensalButton);
 		
-		balancoPagamentoButton.setMnemonic(KeyEvent.VK_P);
+		balancoPagamentoButton.setMnemonic(KeyEvent.VK_G);
 		graficoBotoesPanel.add(balancoPagamentoButton);
 		
 		//Cria o categoriasButton e adiciona ao graficoBotoesPanel.
