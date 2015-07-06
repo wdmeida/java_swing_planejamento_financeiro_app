@@ -7,6 +7,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 
+import tsi.too.samuelwagner.gui.IgGraficoBarra;
 import tsi.too.samuelwagner.tipo.Despesa;
 import tsi.too.samuelwagner.tipo.RendaMensal;
 import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
@@ -16,11 +17,14 @@ import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
  * @author Wagner Almeida
  */
 public class GeraGraficoCategoria {
-	
+	private IgGraficoBarra igGraficoBarra;
 	/**
-	 * Construtor default da classe <code>GeraGraficoCategoria</code>
+	 * Construtor Sobrecarregado da classe <code>GeraGraficoCategoria</code>
+	 * @param igGraficoBarra <code>IgGraficoBarra</code>.
 	 */
-	public GeraGraficoCategoria() {}
+	public GeraGraficoCategoria(IgGraficoBarra igGraficoBarra) {
+		this.igGraficoBarra = igGraficoBarra;
+	}
 
 	/** Gera o gráfico da categoria segundo o mês informado.
 	 * @param mesAno <code>String</code> mês e ano.
@@ -29,12 +33,29 @@ public class GeraGraficoCategoria {
 	 */
 	public ChartPanel geraGraficoBarra(String mesAno, boolean porcentagem){
 		String tipoGrafico;
+		CategoryDataset dataset;
+		//Verifica se o mes foi selecionado
+		if(mesAno != null){
+			if(porcentagem && obtemValorReceita(mesAno) == 0){
+				FuncaoAuxiliar.exibirMensagemErro(igGraficoBarra,"Cadastra uma Renda Para poder Utilizar o "
+						+ "Gráfico Categoria por porcentagem", "Gráfico Categoria");
+				porcentagem = false;
+				igGraficoBarra.getGraficoValorRadio().setSelected(true);
+			}
+			
+			dataset = geraValoresDoGrafico(mesAno,porcentagem);
+			
+		}else
+			dataset = null;
+		
 		if(porcentagem)
 			tipoGrafico = "Porcentagem";
 		else
 			tipoGrafico = "Valor Gasto por Categoria";
-		JFreeChart chart = ChartFactory.createBarChart3D("Gráfico Categoria", null, tipoGrafico,geraValoresDoGrafico(mesAno,porcentagem), PlotOrientation.VERTICAL,
+		
+		JFreeChart chart = ChartFactory.createBarChart3D("Gráfico Categoria", null, tipoGrafico,dataset, PlotOrientation.VERTICAL,
 				true, true,true);
+		
 		ChartPanel chartPanel = new ChartPanel(chart);
 		chartPanel.setBounds(10, 33, 905, 367);
 		return chartPanel;
@@ -47,8 +68,6 @@ public class GeraGraficoCategoria {
 	 */
 	private CategoryDataset geraValoresDoGrafico(String mesAno,boolean porcentagem) {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-			
-		if(mesAno != null){
 		
 			String nomesCategorias[] = GerenciamentoDeFinanca.getGerenciamentoFincanca().getControleCategoria().obterNomesCategorias();
 			
@@ -64,7 +83,8 @@ public class GeraGraficoCategoria {
 				else
 					dataset.addValue(0.0, categoria, "Categorias");
 			}
-		}
+			
+		
 		return dataset;
 	}
 

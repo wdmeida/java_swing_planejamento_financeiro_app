@@ -43,11 +43,12 @@ public class IgGraficoBarra extends JDialog {
 		getContentPane().setLayout(null);
 		
 		panelGraficoMetaMesal = new JPanel();
+		panelGraficoMetaMesal.setBackground(corPainel);
 		panelGraficoMetaMesal.setBorder(new TitledBorder(null, "Grafico Categorias", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelGraficoMetaMesal.setBounds(10, 64, 925, 411);
 		getContentPane().add(panelGraficoMetaMesal);
 		panelGraficoMetaMesal.setLayout(null);
-		geraGraficoCategoria = new GeraGraficoCategoria();
+		geraGraficoCategoria = new GeraGraficoCategoria(IgGraficoBarra.this);
 		
 		
 		JPanel radioPanel = new JPanel();
@@ -58,12 +59,14 @@ public class IgGraficoBarra extends JDialog {
 		radioPanel.setLayout(null);
 		
 		graficoValorRadio = new JRadioButton("Gr\u00E1fico Valor");
+		graficoValorRadio.setBackground(corPainel);
 		graficoValorRadio.setMnemonic(KeyEvent.VK_V);
 		buttonGroup.add(graficoValorRadio);
 		graficoValorRadio.setBounds(202, 19, 134, 23);
 		radioPanel.add(graficoValorRadio);
 		
 		graficoPorcentagemRadio = new JRadioButton("Gr\u00E1fico Porcentagem");
+		graficoPorcentagemRadio.setBackground(corPainel);
 		graficoPorcentagemRadio.setMnemonic(KeyEvent.VK_P);
 		buttonGroup.add(graficoPorcentagemRadio);
 		graficoPorcentagemRadio.setBounds(18, 19, 182, 23);
@@ -76,7 +79,7 @@ public class IgGraficoBarra extends JDialog {
 		getContentPane().add(comboBoxPanel);
 		comboBoxPanel.setLayout(null);
 		
-		mesAnoComboBox = new JComboBox<String>(OperacoesDoIgPlanejamentoFinanceiro.preencheMesAnteriorDespesa());
+		mesAnoComboBox = new JComboBox(OperacoesDoIgPlanejamentoFinanceiro.preencheMesAnteriorDespesa());
 		mesAnoComboBox.setBounds(10, 20, 177, 22);
 		
 		graficoPorcentagemRadio.addActionListener(new ActionListener() {
@@ -134,5 +137,13 @@ public class IgGraficoBarra extends JDialog {
 		//Repinta o painel.
 		panelGraficoMetaMesal.repaint();
 	}
+
+	/**Retorna a referêcia do botton radio.
+	 * @return um <code>JRadioButton</code>.
+	 */
+	public JRadioButton getGraficoValorRadio() {
+		return graficoValorRadio;
+	}
+	
 	
 }
