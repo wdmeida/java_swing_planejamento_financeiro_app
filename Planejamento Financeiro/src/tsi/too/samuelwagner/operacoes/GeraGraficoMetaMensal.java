@@ -91,13 +91,14 @@ public class GeraGraficoMetaMensal {
 		//obtem a porcentagem 
 		porcentagem = valorTotalGasto/meta.getValor()*100;
 		
-		//Verifica se passou do limite estabelecido.
-		if(porcentagem >= meta.getPorcentagem())
-			igGraficoMetaMensal.getValorGastoLabel().setBorder(new LineBorder(Color.YELLOW));
+		//Verifica se Passou dos 100%.
+		if(porcentagem >= 100)
+			igGraficoMetaMensal.getValorGastoLabel().setBorder(new LineBorder(Color.RED));
 		else
-			//Verifica se Passou dos 100%.
-			if(porcentagem >= 100)
+			//Verifica se passou do limite estabelecido.
+			if(porcentagem >= meta.getPorcentagem())
 				igGraficoMetaMensal.getValorGastoLabel().setBorder(new LineBorder(Color.YELLOW));
+			
 		
 		//Atribui os valores obtidos ao painel.
 		igGraficoMetaMensal.getValorGastoLabel().setText(String.format("R$ %1.2f", valorTotalGasto));
