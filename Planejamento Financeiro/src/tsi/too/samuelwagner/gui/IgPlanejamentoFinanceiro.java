@@ -39,6 +39,7 @@ import tsi.too.samuelwagner.trataeventos.TratadorEventoMesRendaComboBox;
 import tsi.too.samuelwagner.trataeventos.TratadorEventoPainelMetas;
 import tsi.too.samuelwagner.trataeventos.TratadorEventoBalancoMensal;
 import tsi.too.samuelwagner.validacoes.FuncaoAuxiliar;
+import net.miginfocom.swing.MigLayout;
 /**
  * A classe IgPlanejamentoFinanceiro implementa o Interface Gráfica do Usuário (GUI) da janela principal do aplicativo 
  * Planejamento Financeiro.
@@ -359,40 +360,46 @@ public class IgPlanejamentoFinanceiro extends JFrame {
 		sobreLabel.setBounds(10, 77, 455, 24);
 		panel.add(sobreLabel);
 		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(20, 112, 260, 145);
+		panel.add(panel_1);
+		panel_1.setBackground(corPainel);
+		panel_1.setLayout(new MigLayout("", "[]", "[][][][][][]"));
+		
 		//Cria o rótulo de cadastro.
 		JLabel cadastroLabel = new JLabel("Cadastra e visualiza despesas;");
+		panel_1.add(cadastroLabel, "cell 0 0");
+		cadastroLabel.setIcon(new ImageIcon(IgPlanejamentoFinanceiro.class.getResource("/tsi/too/samuelwagner/imagens/checkmark.png")));
 		cadastroLabel.setForeground(Color.BLACK);
 		cadastroLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		cadastroLabel.setBounds(20, 112, 182, 14);
-		panel.add(cadastroLabel);
 		
 		//Cria o rótulo de cadastro e vizualização.
 		JLabel lblCadastroEVisualizao = new JLabel("Cadastra e visualiza metas;");
+		panel_1.add(lblCadastroEVisualizao, "cell 0 1");
+		lblCadastroEVisualizao.setIcon(new ImageIcon(IgPlanejamentoFinanceiro.class.getResource("/tsi/too/samuelwagner/imagens/checkmark.png")));
 		lblCadastroEVisualizao.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblCadastroEVisualizao.setBounds(20, 137, 159, 14);
-		panel.add(lblCadastroEVisualizao);
 		
 		//Cria o rótulo de cadastro de rendas.
 		JLabel lblCadastroDeRendas = new JLabel("Cadastra rendas;");
+		panel_1.add(lblCadastroDeRendas, "cell 0 2");
+		lblCadastroDeRendas.setIcon(new ImageIcon(IgPlanejamentoFinanceiro.class.getResource("/tsi/too/samuelwagner/imagens/checkmark.png")));
 		lblCadastroDeRendas.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblCadastroDeRendas.setBounds(20, 162, 106, 14);
-		panel.add(lblCadastroDeRendas);
 		
 		//Cria o rótulo de visualização de balancos
 		JLabel visualizarBalancoLabel = new JLabel("Visualiza balanços financeiros;");
+		panel_1.add(visualizarBalancoLabel, "cell 0 3");
+		visualizarBalancoLabel.setIcon(new ImageIcon(IgPlanejamentoFinanceiro.class.getResource("/tsi/too/samuelwagner/imagens/checkmark.png")));
 		visualizarBalancoLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		visualizarBalancoLabel.setBounds(20, 187, 182, 14);
-		panel.add(visualizarBalancoLabel);
 		
 		JLabel lblComeceASeu = new JLabel("Visualiza os balanços através de gráficos;");
+		panel_1.add(lblComeceASeu, "cell 0 4");
+		lblComeceASeu.setIcon(new ImageIcon(IgPlanejamentoFinanceiro.class.getResource("/tsi/too/samuelwagner/imagens/checkmark.png")));
 		lblComeceASeu.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblComeceASeu.setBounds(20, 212, 239, 14);
-		panel.add(lblComeceASeu);
 		
-		JLabel lblSalvaOsGrfico = new JLabel("Salva os gráfico para balanços futuros.");
+		JLabel lblSalvaOsGrfico = new JLabel("Salva gráficos para visualizações futuras.");
+		panel_1.add(lblSalvaOsGrfico, "cell 0 5");
+		lblSalvaOsGrfico.setIcon(new ImageIcon(IgPlanejamentoFinanceiro.class.getResource("/tsi/too/samuelwagner/imagens/checkmark.png")));
 		lblSalvaOsGrfico.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblSalvaOsGrfico.setBounds(20, 237, 220, 14);
-		panel.add(lblSalvaOsGrfico);
 		
 		//Cria o painel de visualização.
 		JPanel visualizarPanel = new JPanel();
