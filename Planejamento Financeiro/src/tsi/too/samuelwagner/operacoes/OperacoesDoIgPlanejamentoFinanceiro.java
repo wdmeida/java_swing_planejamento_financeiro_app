@@ -74,7 +74,7 @@ public class OperacoesDoIgPlanejamentoFinanceiro {
 			data.add(FuncaoAuxiliar.coverteDataParaString(despesa.getDataPagamento(), true));
 			valor.add(String.format("R$ %1.2f", despesa.getValorDespesa()));
 			contador++;
-			if(contador == 10) break;
+			if(contador == 20) break;
 		}//for
 		
 		String[] retorno = new String[0];

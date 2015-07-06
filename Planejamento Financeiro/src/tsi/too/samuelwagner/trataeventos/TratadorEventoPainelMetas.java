@@ -121,8 +121,8 @@ public class TratadorEventoPainelMetas implements ActionListener{
 				planejamentoFinanceiro.getGastoTextField().setBorder(new LineBorder(Color.YELLOW));
 			}
 			else{
-				FuncaoAuxiliar.exibirMensagemErro(planejamentoFinanceiro, "Você extrapolou sua meta de orçamento em compras de "
-						+ "" + categoria + " para este mês.", "Meta categoria");
+				FuncaoAuxiliar.exibirMensagemErro(planejamentoFinanceiro, "Você extrapolou sua meta de orçamento na seguinte categoria:\n "
+						+ categoria, "Meta categoria");
 				planejamentoFinanceiro.getGastoTextField().setBorder(new LineBorder(Color.RED));
 			}
 				

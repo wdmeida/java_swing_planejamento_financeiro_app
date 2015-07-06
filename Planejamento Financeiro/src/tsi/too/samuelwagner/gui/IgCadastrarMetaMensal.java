@@ -121,8 +121,7 @@ public class IgCadastrarMetaMensal extends JDialog {
 		cadastrarMetaPanel.add(cadastrarButton);
 		
 		//Registra o tratador de eventos do botão cadastrarMetaPanel
-		cadastrarButton.addActionListener(new ActionListener() {
-			
+		cadastrarButton.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cadastrarMetaMensal();
